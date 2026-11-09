@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<meta name="referrer" content="no-referrer">
+<title>Santor</title>
+<style>
+  html, body { height:100%; margin:0; }
+  body { background:#0B0B0B; color:#8A8A8A; font:15px system-ui, sans-serif; display:grid; place-items:center; padding-inline:16px; text-align:center; }
+  b { display:block; color:#fff; font-size:40px; letter-spacing:.3em; font-weight:800; }
+  p { margin:12px 0 0; }
+</style>
+</head>
+<body>
+<div><b>SANTOR</b><p id="msg">Loading…</p></div>
+<script>
+// Everything here is encrypted. The key is in the link after #k= and never reaches the server.
+var SANTOR = (function () {
+  function unb64u(s) { s = s.replace(/-/g, '+').replace(/_/g, '/'); while (s.length % 4) s += '='; var r = atob(s), o = new Uint8Array(r.length); for (var i = 0; i < r.length; i++) o[i] = r.charCodeAt(i); return o; }
+  function keyStr() { var m = /^#k=([A-Za-z0-9_-]{43})$/.exec(location.hash || ''); return m && m[1]; }
+  async function open(file) {
+    var k = keyStr(); if (!k) throw 0;
+    var res = await fetch(file, { cache: 'no-store' }); if (!res.ok) throw 0;
+    var d = await res.json();
+    var key = await crypto.subtle.importKey('raw', unb64u(k), 'AES-GCM', false, ['decrypt']);
+    return new Uint8Array(await crypto.subtle.decrypt({ name: 'AES-GCM', iv: unb64u(d.iv) }, key, unb64u(d.ct)));
+  }
+  return { open: open, keyStr: keyStr };
+})();
+(async function () {
+  var msg = document.getElementById('msg');
+  var p = new URLSearchParams(location.search).get('p') || '';
+  if (!/^[a-z0-9-]*$/.test(p)) p = '';
+  try {
+    var html = new TextDecoder().decode(await SANTOR.open('d/' + (p || 'library') + '.json'));
+    // links between pages keep the key; the PDF button decrypts the PDF and saves it
+    var helper = '<script>(function(){var S=window.SANTOR;' +
+      'document.querySelectorAll("[data-p]").forEach(function(a){var p=a.getAttribute("data-p");a.href=location.pathname+(p?"?p="+p:"")+location.hash;});' +
+      'document.querySelectorAll("[data-pdf]").forEach(function(b){b.addEventListener("click",async function(){var t=b.textContent;b.textContent="Preparing…";' +
+      'try{var bytes=await S.open("d/"+b.getAttribute("data-pdf")+".pdf.json");var u=URL.createObjectURL(new Blob([bytes],{type:"application/pdf"}));' +
+      'var a=document.createElement("a");a.href=u;a.download=document.title.replace(/[^A-Za-z0-9 ]+/g,"").trim()+".pdf";document.body.appendChild(a);a.click();a.remove();setTimeout(function(){URL.revokeObjectURL(u)},5000);}' +
+      'catch(e){alert("Could not open the PDF.")}b.textContent=t;});});})();<\/script>';
+    html = html.replace('</body>', helper + '</body>');
+    document.open(); document.write(html); document.close();
+  } catch (e) {
+    msg.textContent = 'Open the link you were sent.';
+  }
+})();
+</script>
+</body>
+</html>
