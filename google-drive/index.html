@@ -102,6 +102,7 @@
   .step .shot[data-slot^="gd-"] { max-width:none; aspect-ratio:16/9; } .step .shot.filled[data-slot^="gd-"] img { max-height:none; width:100%; }
   .bn { display:grid; grid-template-columns:1fr 1fr; gap:10px; margin:10px 0; } .bn figure { margin:0; } .bn img { width:100%; aspect-ratio:16/6; object-fit:cover; border-radius:8px; border:1px solid var(--line); display:block; } .bn figcaption { font-size:12px; color:var(--steel); margin-top:4px; }
   .pfps { display:flex; align-items:center; gap:10px; margin:10px 0 4px; flex-wrap:wrap; } .pfps span { font-size:12px; color:var(--steel); width:100%; } .pfps img { width:64px; height:64px; border-radius:50%; object-fit:cover; border:1px solid var(--line); cursor:zoom-in; }
+  .clips { display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-top:12px; } .clips h4 { margin:0 0 6px; } @media (max-width:700px) { .clips { grid-template-columns:1fr; } }
   .shots { display:flex; gap:12px; flex-wrap:wrap; } .shots .shot { flex:1 1 200px; }
   .never { margin:18px 0 0; background:#0B0B0B; color:#fff; border-left:6px solid #D7262E; border-radius:10px; padding:18px 22px; }
   .never b { display:block; color:#ef5a61; font-size:12px; letter-spacing:.18em; text-transform:uppercase; margin-bottom:8px; }
@@ -154,10 +155,7 @@
 
     <section id="watch">
       <h2><span>01</span>Watch first</h2>
-      <p><strong>How to use Google Drive</strong>. Watch it once for the flow.</p>
-      <div class="video"><iframe src="https://www.youtube.com/embed/gdrxAoqfvbA" allowfullscreen></iframe></div>
-      <p class="vlink">Video not playing? Open it here: <a href="https://www.youtube.com/watch?v=gdrxAoqfvbA">https://www.youtube.com/watch?v=gdrxAoqfvbA</a></p>
-      <p class="note"><strong>Already know Google Drive? Skip the video.</strong> Most of it you won't need. The parts that matter: getting files in (04:09), folders (05:30), sharing (08:26), the phone app (03:24).</p>
+      <p><strong>Already know Google Drive? Skip this.</strong> If not, watch only these four short parts. That's all you need.</p><div class="clips"><div><h4>Getting files in</h4><div class="video"><iframe src="https://www.youtube.com/embed/gdrxAoqfvbA?start=249&end=302&rel=0" allowfullscreen></iframe></div></div><div><h4>Folders</h4><div class="video"><iframe src="https://www.youtube.com/embed/gdrxAoqfvbA?start=330&end=362&rel=0" allowfullscreen></iframe></div></div><div><h4>Sharing</h4><div class="video"><iframe src="https://www.youtube.com/embed/gdrxAoqfvbA?start=506&end=545&rel=0" allowfullscreen></iframe></div></div><div><h4>The phone app</h4><div class="video"><iframe src="https://www.youtube.com/embed/gdrxAoqfvbA?start=204&end=232&rel=0" allowfullscreen></iframe></div></div></div><p class="vlink">The full video (16 minutes), if you want it: <a href="https://www.youtube.com/watch?v=gdrxAoqfvbA">https://www.youtube.com/watch?v=gdrxAoqfvbA</a></p>
     </section>
 
     <section id="what">
