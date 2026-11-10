@@ -1,0 +1,650 @@
+<!doctype html><html><head><meta name="robots" content="noindex,nofollow"><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Welcome to Santor Media</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter+Tight:wght@400;600;800&display=swap">
+<style>
+  :root { --bg:#0b0b0b; --panel:#141414; --line:#262626; --ink:#ffffff; --ink-2:#c4c4c4; --ink-3:#8a8a8a; --gold:#ffffff; --gold-2:#8a8a8a; --gold-ink:#ffffff; --red:#8a8a8a; --green:#ffffff; }
+  * { box-sizing:border-box; }
+  html, body { height:100%; }
+  body { margin:0; background:var(--bg); color:var(--ink); font-family:"Inter Tight",system-ui,sans-serif; -webkit-font-smoothing:antialiased; overflow:hidden; }
+  h1,h2,h3 { font-family:"Bebas Neue","Arial Narrow",Impact,sans-serif; font-weight:400; margin:0; letter-spacing:.01em; text-wrap:balance; }
+  .deck { position:relative; height:100vh; width:100%; background:var(--bg); }
+  .s { position:absolute; inset:0; display:flex; flex-direction:column; justify-content:center; padding:6vh 8vw; opacity:0; visibility:hidden; transition:opacity .3s ease; }
+  .s.on { opacity:1; visibility:visible; }
+  @media (prefers-reduced-motion: reduce) { .s { transition:none; } }
+  .k { font-size:clamp(12px,1.3vw,16px); font-weight:600; letter-spacing:.2em; text-transform:uppercase; color:var(--gold); margin-bottom:2.5vh; display:flex; align-items:center; gap:1vw; }
+  .k::before { content:""; width:3vw; height:2px; background:var(--gold); }
+  h1 { font-size:clamp(64px,13vw,200px); line-height:.9; }
+  h2 { font-size:clamp(40px,7.5vw,110px); line-height:.92; max-width:20ch; }
+  .big { font-family:"Bebas Neue"; font-size:clamp(110px,24vw,380px); line-height:.85; color:var(--gold); font-variant-numeric:tabular-nums; }
+  .big.bad { color:var(--red); }
+  .sub { margin-top:3vh; font-size:clamp(18px,2.3vw,32px); color:var(--ink-2); max-width:34ch; line-height:1.3; }
+  .sub strong { color:var(--ink); font-weight:600; }
+  .row { display:flex; gap:1vw; margin-top:4vh; flex-wrap:wrap; }
+  .tile { flex:1 1 180px; border-top:3px solid var(--line); padding:2vh 0 0; min-width:180px; }
+  .tile .l { font-size:clamp(12px,1.2vw,15px); text-transform:uppercase; letter-spacing:.14em; color:var(--ink-3); font-weight:600; }
+  .tile .v { font-family:"Bebas Neue"; font-size:clamp(48px,6.5vw,96px); line-height:1; margin-top:.6vh; font-variant-numeric:tabular-nums; }
+  .tile .e { font-size:clamp(13px,1.3vw,17px); color:var(--ink-2); margin-top:.6vh; }
+  .tile.gold { border-top-color:var(--gold); } .tile.gold .v { color:var(--gold); }
+  .tile.red { border-top-color:var(--red); } .tile.red .v { color:var(--red); }
+  .tile.green { border-top-color:var(--green); } .tile.green .v { color:var(--green); }
+  .list { margin-top:4vh; display:grid; gap:1.6vh; max-width:72ch; }
+  .li { display:grid; grid-template-columns:auto 1fr; gap:1.6vw; align-items:baseline; font-size:clamp(18px,2.4vw,34px); line-height:1.25; }
+  .li b { font-family:"Bebas Neue"; font-weight:400; color:var(--gold); font-size:1.25em; }
+  .li span { color:var(--ink-2); } .li span strong { color:var(--ink); font-weight:600; }
+  .li.hot span { color:var(--ink); }
+  .tbl { margin-top:3.5vh; display:grid; gap:.6vh; max-width:1000px; }
+  .tr { display:grid; grid-template-columns:1.2fr 1fr 1fr 1fr; gap:1vw; align-items:baseline; font-size:clamp(15px,1.9vw,26px); padding:.7vh 0; border-bottom:1px solid var(--line); font-variant-numeric:tabular-nums; }
+  .tr.h { font-size:clamp(11px,1.1vw,14px); text-transform:uppercase; letter-spacing:.14em; color:var(--ink-3); border-bottom:2px solid var(--gold); }
+  .tr b { font-weight:800; }
+  .tr .r { color:var(--red); font-weight:600; } .tr .ok { color:var(--green); font-weight:600; } .tr .m { color:var(--ink-3); }
+  .bar { position:absolute; left:0; bottom:0; height:4px; background:var(--gold); transition:width .3s; }
+  .nav { position:absolute; right:2vw; bottom:2vh; font-size:12px; color:var(--ink-3); letter-spacing:.14em; text-transform:uppercase; }
+  .stamp { display:inline-block; background:linear-gradient(135deg,var(--gold-2),var(--gold)); color:#fff; font-family:"Bebas Neue"; font-size:clamp(22px,3vw,44px); padding:.6vh 1.6vw; border-radius:4px; transform:rotate(-2deg); margin-top:3vh; }
+  .ladder { display:flex; align-items:flex-end; gap:1.5vw; margin-top:4vh; flex-wrap:wrap; }
+  .rung { flex:1 1 150px; min-width:150px; }
+  .rung .v { font-family:"Bebas Neue"; font-size:clamp(44px,7vw,120px); line-height:1; color:var(--ink-3); }
+  .rung .e { font-size:clamp(13px,1.3vw,18px); color:var(--ink-3); margin-top:.5vh; }
+  .rung.done .v { color:var(--ink); } .rung.done .e { color:var(--ink-2); }
+  .rung.now .v { color:var(--gold); } .rung.now .e { color:var(--gold); font-weight:600; }
+
+  .tr5 { grid-template-columns:1.3fr .8fr .8fr 1fr .8fr; }
+  .split { display:grid; grid-template-columns:1fr auto; gap:4vw; align-items:center; }
+  .photo { width:clamp(180px,26vw,380px); height:clamp(180px,26vw,380px); border-radius:50%; object-fit:cover; border:4px solid var(--gold); box-shadow:0 0 0 12px rgba(255,255,255,.12), 0 30px 80px rgba(255,255,255,0); justify-self:end; }
+  @media (max-width:760px) { .split { grid-template-columns:1fr; } .photo { justify-self:start; } }
+  /* polish */
+  .deck::before { content:""; position:absolute; inset:0; background:radial-gradient(70vw 70vh at 12% 18%, rgba(255,255,255,0), transparent 60%), radial-gradient(60vw 60vh at 90% 95%, rgba(255,255,255,.14), transparent 60%); pointer-events:none; z-index:1; }
+  .s { z-index:2; background:transparent; }
+  .brand { position:absolute; top:3vh; left:8vw; z-index:5; font-family:"Bebas Neue"; font-size:clamp(20px,2.2vw,30px); color:var(--gold); letter-spacing:.12em; }
+  .brand small { display:inline-block; margin-left:1vw; font-family:"Inter Tight"; font-size:11px; letter-spacing:.2em; color:var(--ink-3); vertical-align:middle; }
+  .nav { top:3.4vh; bottom:auto; right:8vw; z-index:5; }
+  .s > * { opacity:0; transform:translateY(22px); transition:opacity .5s ease, transform .5s ease; }
+  .s.on > * { opacity:1; transform:none; }
+  .s.on > :nth-child(1) { transition-delay:.05s } .s.on > :nth-child(2) { transition-delay:.15s } .s.on > :nth-child(3) { transition-delay:.3s } .s.on > :nth-child(4) { transition-delay:.45s } .s.on > :nth-child(5) { transition-delay:.6s }
+  @media (prefers-reduced-motion: reduce) { .s > * { transition:none; transform:none; opacity:1; } }
+  .big { text-shadow:0 0 80px rgba(255,255,255,0); }
+  .big.bad { text-shadow:0 0 60px rgba(255,255,255,0); }
+  h1 { text-shadow:0 2px 40px rgba(0,0,0,.6); }
+  .tile { position:relative; }
+  .tile.gold::before { content:""; position:absolute; left:0; top:-3px; height:3px; width:0; background:#fff; transition:width .8s ease .3s; }
+  .s.on .tile.gold::before { width:100%; opacity:.5; }
+  .tr { transition:background .2s; } .tr:not(.h):hover { background:rgba(255,255,255,.03); }
+  .bar { z-index:5; box-shadow:0 0 14px rgba(255,255,255,0); background:linear-gradient(90deg,var(--gold-2),var(--gold)); }
+  .stamp { box-shadow:0 10px 50px rgba(255,255,255,0); }
+
+  .race { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:1.2vw; margin-top:3vh; }
+  .rc { border-top:3px solid var(--line); padding-top:1.6vh; }
+  .rc.lead { border-top-color:var(--gold); }
+  .rc .who { display:flex; align-items:center; gap:.8vw; font-weight:800; font-size:clamp(14px,min(1.6vw,2.2vh),22px); }
+  .rc .who img { width:clamp(36px,min(4vw,6vh),64px); height:clamp(36px,min(4vw,6vh),64px); border-radius:50%; object-fit:cover; border:2px solid var(--gold); }
+  .rc .who i { display:inline-block; width:clamp(36px,min(4vw,6vh),64px); height:clamp(36px,min(4vw,6vh),64px); border-radius:50%; background:var(--panel); border:2px solid var(--line); }
+  .rc .v { font-family:"Bebas Neue"; font-size:clamp(36px,min(5.5vw,7vh),84px); line-height:1; margin-top:1vh; font-variant-numeric:tabular-nums; }
+  .rc.lead .v { color:var(--gold); } .rc.zero .v { color:var(--red); }
+  .rc .e { font-size:clamp(12px,min(1.2vw,1.7vh),16px); color:var(--ink-2); margin-top:.4vh; }
+  .rc img.ss { display:block; width:100%; margin-top:1.2vh; border-radius:6px; border:1px solid var(--line); }
+  @media (max-aspect-ratio: 1/1) { .race { grid-template-columns:repeat(2,minmax(0,1fr)); } }
+  .hero { display:grid; grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr); gap:3vw; align-items:center; }
+  .frame { position:relative; width:100%; aspect-ratio:4/5; max-height:70vh; border-radius:14px; overflow:hidden; background:linear-gradient(160deg,#1a1a1a,#0f0f0f 70%); box-shadow:0 30px 90px rgba(255,255,255,0), 0 0 0 1px rgba(255,255,255,0); justify-self:end; }
+  .frame img { width:100%; height:100%; object-fit:cover; object-position:50% 10%; display:block; }
+  .frame .tag { position:absolute; left:1.2vw; bottom:1.2vh; background:rgba(10,7,19,.7); backdrop-filter:blur(6px); padding:.6vh 1vw; border-radius:6px; font-family:"Bebas Neue"; font-size:clamp(18px,min(2.2vw,3vh),32px); letter-spacing:.06em; color:var(--gold); }
+  .frame .wm { position:absolute; inset:0; display:flex; align-items:center; justify-content:center; font-family:"Bebas Neue"; font-size:clamp(80px,14vw,220px); color:rgba(255,255,255,.18); letter-spacing:.05em; }
+  .fix { margin-top:3vh; display:grid; gap:.8vh; }
+  .fix div { display:flex; gap:1vw; align-items:baseline; font-size:clamp(15px,min(1.9vw,2.4vh),26px); color:var(--ink-2); }
+  .fix div::before { content:"✕"; color:var(--red); font-weight:800; }
+  .fix div.ok::before { content:"→"; color:var(--green); }
+  .fix strong { color:var(--ink); font-weight:600; }
+  .shout { display:inline-block; margin-top:2vh; background:linear-gradient(135deg,var(--gold-2),var(--gold)); color:#fff; font-family:"Bebas Neue"; font-size:clamp(20px,min(2.6vw,3.4vh),40px); padding:.7vh 1.6vw; border-radius:6px; letter-spacing:.04em; box-shadow:0 10px 40px rgba(255,255,255,0); }
+  @media (max-aspect-ratio: 1/1) { .hero { grid-template-columns:1fr; } .frame { max-height:42vh; aspect-ratio:4/5; width:auto; height:42vh; justify-self:start; } }
+  .duo { display:grid; grid-template-columns:1fr 1fr; gap:2vw; margin-top:3vh; }
+  .duo .frame { aspect-ratio:16/10; max-height:46vh; justify-self:stretch; }
+  .duo .frame img { object-position:50% 20%; }
+  @media (max-aspect-ratio: 1/1) { .duo { grid-template-columns:1fr; } .duo .frame { height:auto; max-height:30vh; width:100%; } }
+  .stamp, .shout { align-self:flex-start; }
+  /* finale */
+  .finale { align-items:center; text-align:center; overflow:hidden; }
+  .logo { font-family:"Bebas Neue"; font-size:clamp(140px, min(30vw, 42vh), 520px); line-height:.85; letter-spacing:.02em;
+    background:linear-gradient(100deg,#8a8a8a 0%,#ffffff 35%,#ffffff 50%,#ffffff 65%,#8a8a8a 100%); background-size:250% 100%;
+    -webkit-background-clip:text; background-clip:text; color:transparent; animation:shine 3.2s linear infinite; filter:drop-shadow(0 0 40px rgba(255,255,255,.18)); }
+  @keyframes shine { 0% { background-position:120% 0 } 100% { background-position:-130% 0 } }
+  .finale h1 { font-size:clamp(48px, min(9vw, 12vh), 150px); margin-top:1vh; }
+  .cash { margin-top:3vh; font-family:"Bebas Neue"; font-size:clamp(28px, min(4.5vw, 6vh), 72px); letter-spacing:.18em; color:#fff;
+    padding:1vh 3vw; border-radius:8px; background:linear-gradient(135deg,var(--gold-2),var(--gold)); box-shadow:0 0 0 0 rgba(255,255,255,.18); animation:pulse 1.6s ease-out infinite; }
+  @keyframes pulse { 0% { box-shadow:0 0 0 0 rgba(255,255,255,.18); transform:scale(1) } 70% { box-shadow:0 0 0 28px rgba(255,255,255,0); transform:scale(1.03) } 100% { box-shadow:0 0 0 0 rgba(255,255,255,0); transform:scale(1) } }
+  .orbs { position:absolute; inset:0; pointer-events:none; }
+  .orbs i { position:absolute; bottom:-10vh; width:6px; height:6px; border-radius:50%; background:var(--gold); opacity:0; animation:rise 7s linear infinite; box-shadow:0 0 12px var(--gold); }
+  @keyframes rise { 0% { transform:translateY(0) scale(.6); opacity:0 } 10% { opacity:.9 } 100% { transform:translateY(-120vh) scale(1.2); opacity:0 } }
+  .finale .k { justify-content:center; } .finale .k::before { display:none; }
+  @media (prefers-reduced-motion: reduce) { .logo, .cash, .orbs i { animation:none; } }
+  /* fit */
+  .s { padding:9vh 7vw 6vh; overflow-y:auto; justify-content:safe center; }
+  h1 { font-size:clamp(56px, min(12vw, 15vh), 190px); }
+  h2 { font-size:clamp(34px, min(6.5vw, 8.5vh), 100px); }
+  .big { font-size:clamp(96px, min(22vw, 32vh), 360px); }
+  .sub { font-size:clamp(16px, min(2.1vw, 2.6vh), 30px); }
+  .tile { min-width:150px; flex-basis:150px; }
+  .tile .v { font-size:clamp(40px, min(6vw, 7.5vh), 92px); }
+  .li { font-size:clamp(16px, min(2.2vw, 2.8vh), 32px); }
+  .tr { font-size:clamp(14px, min(1.8vw, 2.3vh), 25px); }
+  .rung .v { font-size:clamp(40px, min(6.5vw, 9vh), 116px); }
+  .split { grid-template-columns:minmax(0,1fr) auto; gap:3vw; }
+  .photo { width:clamp(160px, min(24vw, 30vh), 360px); height:clamp(160px, min(24vw, 30vh), 360px); }
+  @media (max-aspect-ratio: 1/1) {
+    .split { grid-template-columns:1fr; gap:3vh; }
+    .photo { width:clamp(140px, 22vh, 260px); height:clamp(140px, 22vh, 260px); justify-self:start; order:-1; }
+    .row { gap:2vh 3vw; }
+    .list { gap:1.2vh; }
+  }
+  .brand, .nav { top:2.2vh; }
+</style>
+<style>
+  .flow { display:flex; flex-wrap:wrap; align-items:stretch; gap:.8vw; margin-top:4vh; }
+  .st { flex:1 1 120px; min-width:120px; border-top:3px solid var(--line); padding-top:1.6vh; }
+  .st .v { font-family:"Bebas Neue"; font-size:clamp(26px, min(3.4vw, 4.4vh), 54px); line-height:1; }
+  .st .e { font-size:clamp(12px, min(1.25vw, 1.8vh), 17px); color:var(--ink-2); margin-top:.6vh; line-height:1.35; }
+  .st.us { border-top-color:var(--gold); } .st.us .v { color:var(--gold); }
+  .st.them { opacity:.55; }
+  .arrow { align-self:center; color:var(--ink-3); font-size:clamp(18px,2vw,28px); }
+  .side { display:grid; grid-template-columns:1fr 1fr; gap:2vw; margin-top:4vh; max-width:1100px; }
+  .side > div { border-radius:10px; padding:2.4vh 1.6vw; border:1px solid var(--line); background:rgba(20,20,20,.6); }
+  .side .us { border-color:var(--gold); box-shadow:0 0 0 1px var(--gold), 0 20px 60px rgba(255,255,255,0); }
+  .side .l { font-size:clamp(11px,1.1vw,14px); text-transform:uppercase; letter-spacing:.16em; color:var(--ink-3); font-weight:600; }
+  .side .v { font-family:"Bebas Neue"; font-size:clamp(36px, min(5vw, 6.5vh), 80px); line-height:1; margin-top:.8vh; }
+  .side .us .v { color:var(--gold); }
+  .side .e { font-size:clamp(14px, min(1.6vw, 2.2vh), 22px); color:var(--ink-2); margin-top:1vh; line-height:1.35; }
+  .chips { display:flex; flex-wrap:wrap; gap:.8vw; margin-top:4vh; }
+  .chip { font-family:"Bebas Neue"; font-size:clamp(24px, min(3.2vw, 4.2vh), 50px); padding:.6vh 1.4vw; border:1px solid var(--line); border-radius:8px; background:rgba(20,20,20,.6); }
+  .chip.more { color:var(--ink-3); border-style:dashed; }
+  .week { display:grid; grid-template-columns:repeat(6,minmax(0,1fr)); gap:.8vw; margin-top:2.6vh; }
+  .day { border:1px solid var(--line); border-radius:10px; background:rgba(20,20,20,.7); padding:1.6vh .9vw; display:flex; flex-direction:column; gap:1vh; }
+  .day .dn { display:flex; align-items:baseline; gap:.6vw; }
+  .day .dn b { font-family:"Bebas Neue"; font-weight:400; font-size:clamp(30px, min(3.4vw, 5vh), 56px); line-height:1; background:linear-gradient(135deg,#ffffff,#8a8a8a); -webkit-background-clip:text; background-clip:text; color:transparent; }
+  .day .dn span { font-size:clamp(10px,1vw,13px); letter-spacing:.16em; color:var(--ink-3); font-weight:600; }
+  .day h3 { font-family:"Inter Tight"; font-weight:800; font-size:clamp(13px, min(1.3vw, 1.9vh), 18px); line-height:1.2; }
+  .day ul { margin:0; padding:0; list-style:none; display:grid; gap:.6vh; }
+  .day li { font-size:clamp(11px, min(1.05vw, 1.6vh), 15px); color:var(--ink-2); line-height:1.3; padding-left:.9em; position:relative; }
+  .day li::before { content:"▸"; position:absolute; left:0; color:var(--gold-2); }
+  .day li strong { color:var(--ink); font-weight:600; } .day li em { font-style:normal; color:var(--green); font-weight:600; }
+  .day .done { margin-top:auto; border-top:1px dashed var(--line); padding-top:1vh; font-size:clamp(10px, min(1vw, 1.5vh), 14px); color:var(--ink); font-weight:600; line-height:1.3; }
+  .day .done::before { content:"DONE = "; color:var(--green); letter-spacing:.12em; font-size:.85em; display:block; }
+  .day .w { font-size:clamp(10px, min(.95vw, 1.4vh), 13px); color:#ffffff; }
+  .loop { display:inline-flex; gap:1vw; align-items:center; margin-top:2vh; padding:1vh 1.4vw; border-radius:10px; border:1px solid var(--line); background:rgba(20,20,20,.6); font-size:clamp(14px, min(1.6vw, 2.2vh), 22px); color:var(--ink-2); align-self:flex-start; }
+  .loop strong { color:var(--ink); }
+  @media (max-aspect-ratio: 1/1) { .week { grid-template-columns:repeat(2,minmax(0,1fr)); } .side { grid-template-columns:1fr; } }
+  .people { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:1.4vw; margin-top:4vh; }
+  .pp { border-top:3px solid var(--gold); padding-top:1.6vh; }
+  .pp .v { font-family:"Bebas Neue"; font-size:clamp(40px, min(5.5vw, 7vh), 90px); line-height:1; color:var(--gold); }
+  .pp .e { font-size:clamp(14px, min(1.6vw, 2.2vh), 22px); color:var(--ink-2); margin-top:.8vh; line-height:1.35; }
+  .tp { color:var(--ink-3); opacity:.6; font-family:"Inter Tight"; font-weight:400; font-size:.4em; vertical-align:super; margin:0 .15em; }
+  .crs { display:flex; justify-content:center; gap:5vw; flex-wrap:wrap; }
+  .cr { display:flex; flex-direction:column; align-items:flex-start; }
+  .cr img { display:block; height:min(54vh, 120vw); aspect-ratio:4/5; max-width:100%; object-fit:cover; object-position:50% 25%; border-radius:12px; }
+  .cr .who { margin-top:2.2vh; font-size:clamp(11px,1.1vw,14px); font-weight:600; letter-spacing:.2em; text-transform:uppercase; color:var(--ink-3); }
+  .cr .nm { font-family:"Bebas Neue"; font-size:clamp(44px, min(5.5vw, 7vh), 92px); line-height:.95; color:var(--ink); }
+  .cr .ni { font-size:clamp(14px, min(1.5vw, 2vh), 20px); color:var(--gold); font-weight:600; }
+  .people.two { grid-template-columns:repeat(2,minmax(0,1fr)); max-width:1100px; }
+  .qs { display:grid; gap:1.4vh; margin-top:2vh; }
+  .qs span { font-family:"Bebas Neue"; font-size:clamp(22px, min(2.6vw, 3.6vh), 40px); color:var(--ink-3); border-bottom:1px solid var(--line); padding-bottom:1vh; }
+  @media (max-aspect-ratio: 1/1) { .people, .people.two { grid-template-columns:1fr; } }
+  .notes { display:grid; grid-template-columns:1fr 1fr; gap:2vw; margin-top:3vh; }
+  .notes.one { grid-template-columns:1fr; }
+  .pad { border:1px dashed var(--ink-3); border-radius:10px; padding:1.6vh 1.2vw; min-height:34vh; background:rgba(20,20,20,.55); display:flex; flex-direction:column; gap:1vh; }
+  .pad .l { font-family:"Bebas Neue"; font-size:clamp(26px, min(3vw, 4vh), 46px); color:var(--gold); line-height:1; }
+  .pad [contenteditable] { flex:1; outline:none; font-size:clamp(15px, min(1.7vw, 2.3vh), 24px); color:var(--ink); line-height:1.45; cursor:text; white-space:pre-wrap; }
+  .pad [contenteditable]:empty::before { content:attr(data-ph); color:var(--ink-3); }
+  .pad:focus-within { border-color:var(--gold); border-style:solid; }
+  @media (max-aspect-ratio: 1/1) { .notes { grid-template-columns:1fr; } .pad { min-height:20vh; } }
+</style>
+
+<style>
+  .ph { display:inline-block; color:var(--gold); border:1px dashed rgba(255,255,255,.18); border-radius:6px; padding:0 .35em; line-height:1.15; }
+  .pp .v .ph, h2 .ph { font-size:inherit; }
+  .crs .ph-pic { display:grid; place-items:center; height:min(54vh,120vw); aspect-ratio:4/5; max-width:100%; border-radius:12px; border:1px dashed rgba(255,255,255,.18); background:linear-gradient(160deg,#1a1a1a,#0f0f0f 70%); font-family:"Bebas Neue"; font-size:clamp(20px,min(2.2vw,3vh),32px); letter-spacing:.08em; color:rgba(255,255,255,.18); }
+  /* app snapshot (mirrors the live Today page) */
+  .appwrap { display:grid; grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr); gap:3vw; align-items:center; }
+  .app { position:relative; border-radius:14px; overflow:hidden; background:#0b0b0b; border:1px solid rgba(255,255,255,0); box-shadow:0 30px 90px rgba(255,255,255,0); font-size:min(1vw,1.6vh); }
+  .app::before { content:""; position:absolute; inset:0; background:radial-gradient(60% 50% at 0% 0%, rgba(255,255,255,.22), transparent 70%); pointer-events:none; }
+  .app .chrome { display:flex; align-items:center; gap:.5em; padding:.8em 1.2em; border-bottom:1px solid var(--line); background:#111111; }
+  .app .chrome i { width:.75em; height:.75em; border-radius:50%; background:#262626; }
+  .app .chrome span { margin-left:1em; flex:1; text-align:center; color:var(--ink-3); font-size:.85em; letter-spacing:.04em; background:#0b0b0b; border-radius:6px; padding:.25em 0; }
+  .app .in { position:relative; padding:1.6em 2.2em 2em; }
+  .app .top { display:flex; align-items:center; gap:1.4em; font-size:.8em; letter-spacing:.18em; color:var(--ink-3); font-weight:600; }
+  .app .top b { font-family:"Bebas Neue"; font-weight:400; font-size:2.2em; letter-spacing:.06em; color:var(--gold); }
+  .app .top .tb { color:var(--gold); } .app .top .lv { margin-left:auto; }
+  .app .hd { display:flex; align-items:center; gap:1.6em; margin-top:1.4em; }
+  .app .face { width:2.7em; height:2.7em; border-radius:50%; flex:none; display:grid; place-items:center; background:linear-gradient(135deg,#8a8a8a,#8a8a8a); border:.2em solid var(--gold); box-shadow:0 0 0 .5em rgba(255,255,255,.12); font-family:"Bebas Neue"; font-size:1.9em; }
+  .app .hd .kk { font-size:.8em; letter-spacing:.2em; color:var(--gold); font-weight:600; }
+  .app .hd .nm { font-family:"Bebas Neue"; font-size:4.4em; line-height:.95; letter-spacing:.01em; }
+  .app .hd .nm .ph { padding:0 .2em; }
+  .app .hd .sb { color:var(--ink-2); font-size:1em; } .app .hd .sb b { color:var(--gold); font-weight:600; }
+  .app .pg { margin-left:auto; text-align:right; } .app .pg .v { font-family:"Bebas Neue"; font-size:3.4em; line-height:1; color:var(--gold); } .app .pg .l { font-size:.72em; letter-spacing:.16em; color:var(--ink-3); text-transform:uppercase; }
+  .app .br { height:.3em; border-radius:4px; background:#262626; margin:1.3em 0 1.4em; overflow:hidden; } .app .br i { display:block; height:100%; width:40%; background:linear-gradient(90deg,#8a8a8a,#8a8a8a); }
+  .app .bds { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:1em; }
+  .app .bd { background:#141414; border:1px solid var(--line); border-radius:1.1em; padding:1.3em 1.3em 1.1em; display:flex; flex-direction:column; gap:.5em; min-height:12em; }
+  .app .bd .n { font-family:"Bebas Neue"; font-size:3em; line-height:1; color:var(--gold); }
+  .app .bd .t { font-family:"Bebas Neue"; font-size:1.9em; line-height:1; }
+  .app .bd .o { font-size:.85em; color:var(--ink-2); line-height:1.35; }
+  .app .bd .go { margin-top:auto; font-size:.7em; font-weight:600; letter-spacing:.16em; text-transform:uppercase; color:var(--gold); }
+  .app .bd.done { border-color:rgba(255,255,255,.4); } .app .bd.done .n, .app .bd.done .go { color:var(--green); } .app .bd.done .t { color:var(--ink-2); } .app .bd.done .o { color:var(--ink-3); }
+  .app .nx { margin-top:1.4em; font-size:.85em; color:var(--ink-2); } .app .nx b { display:block; font-size:.85em; letter-spacing:.2em; color:var(--gold); font-weight:600; text-transform:uppercase; margin-bottom:.3em; }
+  .appwrap .fix { margin-top:2vh; }
+  @media (max-aspect-ratio: 1/1) { .appwrap { grid-template-columns:1fr; } .app { font-size:1.6vw; } }
+  /* MacBook setup */
+  .apps { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:1.4vw; margin-top:4vh; max-width:1150px; }
+  .ap { border:1px solid var(--line); border-radius:12px; background:rgba(20,20,20,.6); padding:2.4vh 1.6vw; display:flex; flex-direction:column; gap:1vh; }
+  .ap .ic { width:clamp(44px,min(4.4vw,6.4vh),72px); height:clamp(44px,min(4.4vw,6.4vh),72px); border-radius:22%; display:grid; place-items:center; color:#fff; font-family:"Bebas Neue"; font-size:clamp(22px,min(2.4vw,3.4vh),38px); }
+  .ap .v { font-family:"Bebas Neue"; font-size:clamp(36px,min(4.6vw,6.2vh),76px); line-height:1; }
+  .ap .when { font-size:clamp(11px,1.1vw,14px); font-weight:600; letter-spacing:.16em; text-transform:uppercase; }
+  .ap.now { border-color:var(--gold); box-shadow:0 0 0 1px var(--gold), 0 20px 60px rgba(255,255,255,0); } .ap.now .when { color:var(--green); }
+  .ap.later .when { color:var(--ink-3); } .ap.later { opacity:.8; }
+  .ap.more { border-style:dashed; justify-content:center; } .ap.more .v { color:var(--ink-3); }
+  @media (max-aspect-ratio: 1/1) { .apps { grid-template-columns:1fr; } }
+</style>
+<style>
+  .brand img { height:24px; width:auto; vertical-align:middle; display:inline-block; }
+  .slogo { width:min(64vw, 110vh); height:auto; display:block; }
+  .finale .slogo { opacity:0; transform:translateY(16px); transition:opacity .8s ease .2s, transform .8s ease .2s; }
+  .finale.on .slogo { opacity:1; transform:none; }
+  .flow.five .st { flex-basis:150px; }
+  .flow.five .st .v { white-space:nowrap; }
+  .week.four { grid-template-columns:repeat(4,minmax(0,1fr)); }
+  .kit { display:flex; flex-wrap:wrap; gap:.6vw; margin-top:3vh; }
+  .kit span { font-size:clamp(13px,min(1.4vw,2vh),19px); color:var(--ink-2); border:1px solid var(--line); border-radius:999px; padding:.7vh 1.1vw; background:rgba(20,20,20,.6); }
+  .kit span strong { color:var(--ink); font-weight:600; }
+  .apps.five { grid-template-columns:repeat(5,minmax(0,1fr)); max-width:none; margin-top:3vh; }
+  .apps.five .v { font-size:clamp(28px,min(3.2vw,4.4vh),54px); }
+  @media (max-aspect-ratio: 1/1) { .week.four, .apps.five { grid-template-columns:repeat(2,minmax(0,1fr)); } }
+</style>
+<div class="deck" id="deck">
+  <div class="brand"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9Ii0wLjY0IDAgMzEzLjQyIDQwIj48ZGVmcy8+PHBhdGggZmlsbD0iI0ZGRkZGRiIgZD0iTTQwLjIxLDEwLjM2NiBRMjguNzYzLDcuNTA4IDE3LjcxMSw4LjYwMyBRMTIuNTI3LDkuMTE3IDEwLjA0MSwxMC40OTcgUTguOTMxLDExLjExMyA4Ljk3NSwxMS41MjkgUTkuMDU2LDEyLjE2OCAyMi4xOTcsMTUuMDYxIFEzMS4zNDQsMTcuMDc0IDM1LjA3MywxOC41MTMgUTQzLjMyOCwyMS42OTkgNDMuOTcyLDI3LjUwMyBRNDQuNjU5LDM0LjAyNyAzNy41OTksMzcuNDIzIFEzMy43MjUsMzkuMjg1IDI3LjUwNyw0MCBMOS44MTcsNDAgUTUuNDE5LDM5LjQ1NyAxLjQ2NCwzOC4zMjcgTDMuOTM2LDI5LjY3MyBRMTIuOTI4LDMyLjI0MiAyNS4wMjgsMzEuMjA0IFEzMC43OTIsMzAuNzA5IDMzLjY5OCwyOS4zMTIgUTM0LjY4MiwyOC44MzggMzUuMDE0LDI4LjQzNiBRMzQuNTYxLDI2Ljk5OCAyMC4yNjIsMjMuODUgUTExLjc3NSwyMS45ODIgOC4zODcsMjAuNzE5IFEwLjY5NywxNy44NTQgMC4wMjUsMTIuNDcxIFEtMC42NDIsNi4xMzQgNS42NzIsMi42MjggUTguOTQyLDAuODEzIDE0LjA1OCwwIEwzMy45NywwIFEzOC4xNjEsMC41NzggNDIuMzksMS42MzQgWiIvPjxwYXRoIGZpbGw9IiNGRkZGRkYiIGQ9Ik04OC45MjYsNDAgTDc2LDkuOTAzIEw2My4wNzQsNDAgTDUzLjI3OSw0MCBMNzAuNDU4LDAgTDgxLjU0MiwwIEw5OC43MjEsNDAgWiIvPjxwYXRoIGZpbGw9IiNGRkZGRkYiIGQ9Ik0xNDAuMTU5LDQwIEwxMTcsMTAuODg2IEwxMTcsNDAgTDEwOCw0MCBMMTA4LDAgTDExOS44NDEsMCBMMTQzLDI5LjExNCBMMTQzLDAgTDE1MiwwIEwxNTIsNDAgWiIvPjxwYXRoIGZpbGw9IiNGRkZGRkYiIGQ9Ik0xNjEsMCBMMjAzLDAgTDIwMyw5IEwxNjEsOSBaIi8+PHBhdGggZmlsbD0iI0ZGRkZGRiIgZD0iTTE4Ni41LDQuNSBMMTg2LjUsNDAgTDE3Ny41LDQwIEwxNzcuNSw0LjUgWiIvPjxwYXRoIGZpbGw9IiNGRkZGRkYiIGQ9Ik0yNDYuMzY0LDAgTDI1OCwxMS42MzYgTDI1OCwyOC4zNjQgTDI0Ni4zNjQsNDAgTDIyMy42MzYsNDAgTDIxMiwyOC4zNjQgTDIxMiwxMS42MzYgTDIyMy42MzYsMCBaIE0yMjcuMzY0LDkgTDIyMSwxNS4zNjQgTDIyMSwyNC42MzYgTDIyNy4zNjQsMzEgTDI0Mi42MzYsMzEgTDI0OSwyNC42MzYgTDI0OSwxNS4zNjQgTDI0Mi42MzYsOSBaIi8+PHBhdGggZmlsbD0iI0ZGRkZGRiIgZD0iTTI3Niw0MCBMMjY3LDQwIEwyNjcsMCBMMzAyLjM2NCwwIEwzMTEsOC42MzYgTDMxMSwxNy44NjQgTDMwMi4zNjQsMjYuNSBMMjc2LDI2LjUgWiBNMjc2LDE3LjUgTDI5OC42MzYsMTcuNSBMMzAyLDE0LjEzNiBMMzAyLDEyLjM2NCBMMjk4LjYzNiw5IEwyNzYsOSBaIi8+PHBhdGggZmlsbD0iI0ZGRkZGRiIgZD0iTTI5Mi4yMjcsMTguODYzIEwzMTIuNzczLDQwIEwzMDAuMjIyLDQwIEwyODUuNzczLDI1LjEzNyBaIi8+PC9zdmc+" alt="Santor"><small>ONBOARDING · BALI OFFICE</small></div>
+
+  <!-- 1 -->
+  <section class="s on">
+    <div class="k">Day one · welcome</div>
+    <h1>Welcome to Santor Media.</h1>
+    <p class="sub">You're part of it now. <strong>Let's set the standard.</strong></p>
+  </section>
+
+  <!-- 2 -->
+  <section class="s">
+    <div class="k">What we do</div>
+    <h2>We run the marketing for creators.<sup class="tp">*adult</sup></h2>
+    <div class="side">
+      <div class="us"><div class="l">Us</div><div class="v">Marketing</div><div class="e">Every view, follower and click. <strong style="color:var(--ink)">Everything until the fan reaches her.</strong></div></div>
+      <div><div class="l">Not us</div><div class="v">Sales</div><div class="e">What happens once the fan is talking to her.</div></div>
+    </div>
+    <p class="sub">We generate the traffic. <strong>More fans, more revenue for the creator.</strong></p>
+  </section>
+
+  <!-- 3 -->
+  <section class="s">
+    <div class="k">How it flows</div>
+    <h2>From your content to her page.</h2>
+    <div class="flow">
+      <div class="st us"><div class="v">Content</div><div class="e">You make it</div></div>
+      <div class="arrow">→</div>
+      <div class="st us"><div class="v">Accounts</div><div class="e">You run them, make them look real</div></div>
+      <div class="arrow">→</div>
+      <div class="st us"><div class="v">Views</div><div class="e">Millions of people see it</div></div>
+      <div class="arrow">→</div>
+      <div class="st us"><div class="v">Fan</div><div class="e">Clicks through</div></div>
+      <div class="arrow">→</div>
+      <div class="st them"><div class="v">Creator</div><div class="e">Sales takes over</div></div>
+    </div>
+  </section>
+
+  <!-- 4 -->
+  <section class="s">
+    <div class="k">Why we use AI</div>
+    <h2>One person has one reach. Ten accounts have ten.</h2>
+    <div class="row">
+      <div class="tile"><div class="l">One creator</div><div class="v">1×</div><div class="e">one face, one feed, one reach</div></div>
+      <div class="tile gold"><div class="l">AI profiles of her</div><div class="v">10×</div><div class="e">every account works like its own person</div></div>
+    </div>
+    <p class="sub">AI lets us stretch one creator across many accounts.<sup class="tp">*</sup> <strong>Each account is treated as a human.</strong></p>
+  </section>
+
+  <!-- 5 -->
+  <section class="s">
+    <div class="k">What are niches?</div>
+    <h2>Fans follow her because she loves what they love.</h2>
+    <div class="chips">
+      <div class="chip">Lord of the Rings</div>
+      <div class="chip">Star Wars</div>
+      <div class="chip">Star Trek</div>
+      <div class="chip more">and more…</div>
+    </div>
+    <p class="sub">A niche is a world a fan already loves.<sup class="tp">*</sup> You market the girl <strong>and</strong> the niche. <strong>Learn the world, learn its fans</strong>, what they laugh at and what they'd stop scrolling for.</p>
+  </section>
+
+  <!-- 6 -->
+  <section class="s">
+    <div class="k">Your role · social media manager <span style="font-size:.75em;opacity:.75">(poster &amp; content creator)</span></div>
+    <h2>Millions of people will see what you make.</h2>
+    <div class="list">
+      <div class="li"><b>→</b><span><strong>Create the content.</strong> Videos and pictures.</span></div>
+      <div class="li"><b>→</b><span><strong>Curate the profiles</strong> so they look real.</span></div>
+      <div class="li"><b>→</b><span><strong>Post and manage</strong> your accounts.</span></div>
+      <div class="li"><b>→</b><span><strong>Go viral, drive engagement.</strong></span></div>
+    </div>
+    <p class="sub">Your accounts' performance <strong>depends on you.</strong></p>
+  </section>
+
+
+  <!-- 7 -->
+  <section class="s">
+    <div class="k">One rule outside these walls</div>
+    <h2>What we do here stays here.</h2>
+    <div class="fix">
+      <div><sup class="tp">*</sup>No telling friends <strong>"I work here, I do this."</strong></div>
+      <div>No posting about the work.</div>
+      <div class="ok">We're a very private company. <strong>It keeps things simple, for everyone.</strong></div>
+      <div class="ok"><strong>This is a serious environment.</strong> Treat it like one.</div>
+    </div>
+  </section>
+
+  <!-- 8 -->
+  <section class="s">
+    <div class="k">Who we are in the office</div>
+    <h2>Young. Hungry. Two offices.</h2>
+    <div class="row">
+      <div class="tile gold"><div class="l">Office</div><div class="v">Bali</div><div class="e">here · where you'll be</div></div>
+      <div class="tile"><div class="l">Office</div><div class="v">Serbia</div><div class="e">the other team</div></div>
+    </div>
+    <div class="fix">
+      <div class="ok"><sup class="tp">*</sup><strong>We move very quick.</strong> Nothing is the same two days in a row. Something is always happening.</div>
+      <div class="ok"><strong>That speed is why we excel.</strong></div>
+      <div class="ok"><span>We are very new, hungry, and <strong>we rely on independence.</strong></span></div>
+      <div class="ok">Don't feel like you're getting behind. <strong>You're learning. That's natural.</strong></div>
+    </div>
+    <p class="sub">We work hard, push, learn and compete. <strong>This will be a different environment to what you're used to.</strong><sup class="tp">*</sup></p>
+  </section>
+
+  <!-- 9 -->
+  <section class="s">
+    <div class="k">Who you work with</div>
+    <h2>Three people. K leads your training.</h2>
+    <div class="people">
+      <div class="pp"><div class="v">K</div><div class="e">Content and social media. What to make, why it works.</div></div>
+      <div class="pp"><div class="v">Claudya</div><div class="e">The technical side of things.</div></div>
+      <div class="pp"><div class="v">Leon</div><div class="e">Content, day to day, right alongside you. The most experience of all of us. <strong style="color:var(--ink)">Use him.</strong></div></div>
+    </div>
+    <p class="sub">Most of the time you learn with K. <strong>The rest, you move between Claudya and Leon.</strong></p>
+  </section>
+
+  <!-- how -->
+  <section class="s">
+    <div class="k">How we work</div>
+    <h2>Help me so I can help you.</h2>
+    <div class="side">
+      <div class="us"><div class="l">What you get</div><div class="v">Help, always</div><div class="e">I'm not going to push you into deep water. <strong style="color:var(--ink)">I'll always be ready to help.</strong> I ask the stupidest questions to find out why. So should you.</div></div>
+      <div><div class="l">What you won't get</div><div class="v">Hand-holding</div><div class="e">You can be the best here, and <strong style="color:var(--ink)">it will be 100% on you.</strong></div></div>
+    </div>
+    <div class="fix">
+      <div class="ok"><span><strong>Always ask. Be hungry. Be ready to push.</strong></span></div>
+      <div class="ok"><span><sup class="tp">*</sup>Simple doesn't mean slow. <strong>This is the deeper part of the water.</strong></span></div>
+      <div class="ok"><span>In real life, fluent English takes maybe six years. <strong>Here, you learn to speak it in two weeks.</strong></span></div>
+    </div>
+  </section>
+
+  <!-- 10 -->
+  <section class="s">
+    <div class="k">How you learn · every skill</div>
+    <h2>Five steps. Every skill.</h2>
+    <div class="flow five">
+      <div class="st us"><div class="v">1 · Loom / SOP</div><div class="e">Understand what it is and the basic flow.</div></div>
+      <div class="arrow">→</div>
+      <div class="st us"><div class="v">2 · Demo</div><div class="e">We show you how the job is done.</div></div>
+      <div class="arrow">→</div>
+      <div class="st us"><div class="v">3 · Guided</div><div class="e">You do it. We supervise.</div></div>
+      <div class="arrow">→</div>
+      <div class="st us"><div class="v">4 · Solo</div><div class="e">You do it on your own.</div></div>
+      <div class="arrow">→</div>
+      <div class="st us"><div class="v">5 · Review</div><div class="e">We assess it. You get feedback.</div></div>
+    </div>
+    <p class="sub">Action first. <strong>It's the quickest way to learn.</strong></p>
+    <div class="fix"><div class="ok"><span>What you learn here is <strong>a skill you can take anywhere</strong>, as long as you push.<sup class="tp">*</sup></span></div></div>
+  </section>
+
+  <!-- material -->
+  <section class="s">
+    <div class="k">What you learn from</div>
+    <h2>Decks. Tutorials. SOPs.</h2>
+    <div class="people">
+      <div class="pp"><div class="v">Decks</div><div class="e">Run-throughs like this one. The overview, with pictures and short videos.</div></div>
+      <div class="pp"><div class="v">Tutorials</div><div class="e">Loom videos. An in-depth walkthrough of how to do something.</div></div>
+      <div class="pp"><div class="v">SOPs</div><div class="e">The standard way we do something. <strong style="color:var(--ink)">The most detailed of all</strong>, with things the others don't have.</div></div>
+    </div>
+    <div class="fix">
+      <div class="ok"><span>Working alone and stuck? <strong>Read the SOP first.</strong></span></div>
+      <div class="ok"><span>Not in there? <strong>You must tell K and ask him.</strong><sup class="tp">*</sup></span></div>
+    </div>
+  </section>
+
+  <!-- 11 -->
+  <section class="s">
+    <div class="k">Trial · probation · employed</div>
+    <h2>Two weeks to prove it. Three months to keep it.</h2>
+    <div class="ladder">
+      <div class="rung now"><div class="v">Trial</div><div class="e"><strong>2 weeks.</strong> Training. The goal: make your first $1. If you don't, it ends here.</div></div>
+      <div class="rung done"><div class="v">Probation</div><div class="e"><strong>3 months</strong>, the trial included. You're on the team. If you don't perform, it can end that same day.</div></div>
+      <div class="rung done"><div class="v">Yours</div><div class="e"><strong>After that,</strong> fully employed. Your pay goes up.</div></div>
+    </div>
+    <div class="fix">
+      <div class="ok"><span><strong>During probation, either side can end it at any time.</strong> We can let you go, and you can leave.</span></div>
+      <div class="ok"><span><sup class="tp">*</sup>No surprises. <strong>These are the expectations from day one.</strong></span></div>
+    </div>
+    <p class="sub">These two weeks are to see if you fit and if you enjoy it. <strong>If you don't, that's all well too.</strong></p>
+  </section>
+
+  <!-- 12 -->
+  <section class="s">
+    <div class="k">Your day, every day</div>
+    <div class="appwrap">
+      <div>
+        <h2>Open the app. It tells you today.</h2>
+        <div class="fix">
+          <div class="ok"><span><strong>Your own link.</strong> Only you see it.</span></div>
+          <div class="ok"><span><strong>Today's tasks</strong>, one board each. Tap to open.</span></div>
+          <div class="ok"><span><strong>Coming up</strong> so you're ready for tomorrow.</span></div>
+          <div class="ok"><span><strong>A start brief and an end-of-day brief</strong>, every day.</span></div>
+        </div>
+        <p class="sub"><strong>No guessing what today is.</strong></p>
+      </div>
+      <div class="app">
+        <div class="chrome"><i></i><i></i><i></i><span>Santor · Today</span></div>
+        <div class="in">
+          <div class="top"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9Ii0wLjY0IDAgMzEzLjQyIDQwIj48ZGVmcy8+PHBhdGggZmlsbD0iI0ZGRkZGRiIgZD0iTTQwLjIxLDEwLjM2NiBRMjguNzYzLDcuNTA4IDE3LjcxMSw4LjYwMyBRMTIuNTI3LDkuMTE3IDEwLjA0MSwxMC40OTcgUTguOTMxLDExLjExMyA4Ljk3NSwxMS41MjkgUTkuMDU2LDEyLjE2OCAyMi4xOTcsMTUuMDYxIFEzMS4zNDQsMTcuMDc0IDM1LjA3MywxOC41MTMgUTQzLjMyOCwyMS42OTkgNDMuOTcyLDI3LjUwMyBRNDQuNjU5LDM0LjAyNyAzNy41OTksMzcuNDIzIFEzMy43MjUsMzkuMjg1IDI3LjUwNyw0MCBMOS44MTcsNDAgUTUuNDE5LDM5LjQ1NyAxLjQ2NCwzOC4zMjcgTDMuOTM2LDI5LjY3MyBRMTIuOTI4LDMyLjI0MiAyNS4wMjgsMzEuMjA0IFEzMC43OTIsMzAuNzA5IDMzLjY5OCwyOS4zMTIgUTM0LjY4MiwyOC44MzggMzUuMDE0LDI4LjQzNiBRMzQuNTYxLDI2Ljk5OCAyMC4yNjIsMjMuODUgUTExLjc3NSwyMS45ODIgOC4zODcsMjAuNzE5IFEwLjY5NywxNy44NTQgMC4wMjUsMTIuNDcxIFEtMC42NDIsNi4xMzQgNS42NzIsMi42MjggUTguOTQyLDAuODEzIDE0LjA1OCwwIEwzMy45NywwIFEzOC4xNjEsMC41NzggNDIuMzksMS42MzQgWiIvPjxwYXRoIGZpbGw9IiNGRkZGRkYiIGQ9Ik04OC45MjYsNDAgTDc2LDkuOTAzIEw2My4wNzQsNDAgTDUzLjI3OSw0MCBMNzAuNDU4LDAgTDgxLjU0MiwwIEw5OC43MjEsNDAgWiIvPjxwYXRoIGZpbGw9IiNGRkZGRkYiIGQ9Ik0xNDAuMTU5LDQwIEwxMTcsMTAuODg2IEwxMTcsNDAgTDEwOCw0MCBMMTA4LDAgTDExOS44NDEsMCBMMTQzLDI5LjExNCBMMTQzLDAgTDE1MiwwIEwxNTIsNDAgWiIvPjxwYXRoIGZpbGw9IiNGRkZGRkYiIGQ9Ik0xNjEsMCBMMjAzLDAgTDIwMyw5IEwxNjEsOSBaIi8+PHBhdGggZmlsbD0iI0ZGRkZGRiIgZD0iTTE4Ni41LDQuNSBMMTg2LjUsNDAgTDE3Ny41LDQwIEwxNzcuNSw0LjUgWiIvPjxwYXRoIGZpbGw9IiNGRkZGRkYiIGQ9Ik0yNDYuMzY0LDAgTDI1OCwxMS42MzYgTDI1OCwyOC4zNjQgTDI0Ni4zNjQsNDAgTDIyMy42MzYsNDAgTDIxMiwyOC4zNjQgTDIxMiwxMS42MzYgTDIyMy42MzYsMCBaIE0yMjcuMzY0LDkgTDIyMSwxNS4zNjQgTDIyMSwyNC42MzYgTDIyNy4zNjQsMzEgTDI0Mi42MzYsMzEgTDI0OSwyNC42MzYgTDI0OSwxNS4zNjQgTDI0Mi42MzYsOSBaIi8+PHBhdGggZmlsbD0iI0ZGRkZGRiIgZD0iTTI3Niw0MCBMMjY3LDQwIEwyNjcsMCBMMzAyLjM2NCwwIEwzMTEsOC42MzYgTDMxMSwxNy44NjQgTDMwMi4zNjQsMjYuNSBMMjc2LDI2LjUgWiBNMjc2LDE3LjUgTDI5OC42MzYsMTcuNSBMMzAyLDE0LjEzNiBMMzAyLDEyLjM2NCBMMjk4LjYzNiw5IEwyNzYsOSBaIi8+PHBhdGggZmlsbD0iI0ZGRkZGRiIgZD0iTTI5Mi4yMjcsMTguODYzIEwzMTIuNzczLDQwIEwzMDAuMjIyLDQwIEwyODUuNzczLDI1LjEzNyBaIi8+PC9zdmc+" alt="Santor" style="height:1.7em;width:auto;display:block">TODAY<span class="tb" style="margin-left:2em">TODAY</span><span>ACCOUNTS</span><span>TUTORIALS</span><span class="lv">LIVE</span></div>
+          <div class="hd"><div class="face">?</div><div><div class="kk">TODAY</div><div class="nm">Your name</div><div class="sb">Your model and your accounts</div></div><div class="pg"><div class="v">2 / 5</div><div class="l">done today</div></div></div>
+          <div class="br"><i></i></div>
+          <div class="bds">
+            <div class="bd done"><div class="n">✓</div><div class="t">Warm up your accounts</div><div class="o">10 minutes each, Facebook and Instagram.</div><div class="go">Done</div></div>
+            <div class="bd done"><div class="n">✓</div><div class="t">Profile pictures</div><div class="o">Profile picture and bio images for each account.</div><div class="go">Done</div></div>
+            <div class="bd"><div class="n">3</div><div class="t">5 videos for your creator</div><div class="o">From the Loom. Done = 5 videos shown before end of day.</div><div class="go">Open →</div></div>
+          </div>
+          <div class="nx"><b>Next · tomorrow</b>Post your first reel</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 13 -->
+  <section class="s">
+    <div class="k">Your first week · one day, one content focus</div>
+    <div class="week four">
+      <div class="day"><div class="dn"><b>1</b><span>DAY</span></div><h3>Pictures + first accounts</h3><ul><li><em>30 pictures</em>: <strong>15 guided, 15 solo</strong></li><li>Your model deck: who she is, her reference accounts and videos</li><li>First accounts: <strong>Instagram, Facebook, Threads</strong></li></ul><div class="w">SOPs: Creating Pictures · Creating Accounts</div><div class="done">Reviewed with K</div></div>
+      <div class="day"><div class="dn"><b>2</b><span>DAY</span></div><h3>Warm up + Higgsfield</h3><ul><li>Warm up your accounts</li><li><strong>Higgsfield</strong> videos</li><li>Winning captions and the right music</li></ul><div class="done"><strong>10 finished, winning</strong> Higgsfield videos</div></div>
+      <div class="day"><div class="dn"><b>3</b><span>DAY</span></div><h3>Factory videos</h3><ul><li><strong>Factory</strong> videos</li><li>The Scriptwriter</li><li>The Editor</li></ul><div class="done">Reviewed with K</div></div>
+      <div class="day"><div class="dn"><b>4+</b><span>DAY</span></div><h3>Your tasks + posting</h3><ul><li>Your tasks for the day, every day</li><li><strong>Posting</strong> on your accounts</li><li>Start brief, end-of-day brief</li><li>Goal: your <strong>first $1</strong> inside 2 weeks</li></ul><div class="done">Reviewed with K</div></div>
+    </div>
+    <div class="loop">↻ <span><strong>Every focus: Loom/SOP → demo → guided → solo → review.</strong> Anything you got stuck on goes into the SOP.</span></div>
+  </section>
+  <!-- roadmap -->
+  <section class="s">
+    <div class="k">Your roadmap · 30 days</div>
+    <h2>Thirty days. Four milestones.</h2>
+    <div class="week four">
+      <div class="day"><div class="dn"><b>1–7</b><span>DAYS</span></div><h3>Learn every focus</h3><ul><li>Pictures, accounts, Higgsfield, Factory</li><li>One focus a day</li></ul><div class="done">You can make all of it</div></div>
+      <div class="day"><div class="dn"><b>8–14</b><span>DAYS</span></div><h3>The trial</h3><ul><li>Your tasks, every day</li><li>Your accounts, posting</li></ul><div class="done">Your <strong>first $1</strong>, or it ends</div></div>
+      <div class="day"><div class="dn"><b>15–21</b><span>DAYS</span></div><h3>On your own</h3><ul><li>Less help, more volume</li><li>The SOP before K</li></ul><div class="done">Reviewed with K</div></div>
+      <div class="day"><div class="dn"><b>22–30</b><span>DAYS</span></div><h3>Your numbers</h3><ul><li>What works, more of it</li><li>Review with Leon and K</li></ul><div class="done">Day 30 review</div></div>
+    </div>
+    <p class="sub">Your milestones are set with Leon and K <strong>on day one.</strong></p>
+  </section>
+
+  <!-- 14 -->
+  <section class="s">
+    <div class="k">Hours &amp; pay</div>
+    <h2>Your income is in your hands.</h2>
+    <div class="row">
+      <div class="tile"><div class="l">Hours</div><div class="v">4pm–12am</div><div class="e">Monday to Saturday · Sunday off</div></div>
+      <div class="tile gold"><div class="l">Base · monthly</div><div class="v">IDR 4M</div><div class="e">paid once a month</div></div>
+      <div class="tile green"><div class="l">Commission</div><div class="v">2.5%</div><div class="e">of what your accounts make</div></div>
+    </div>
+    <div class="fix">
+      <div class="ok"><sup class="tp">*</sup>One account made <strong>$80,000 in about 30 days.</strong> Not rare here.</div>
+      <div class="ok">2.5% of that is <strong>$2,000, around IDR 33 million.</strong> In one month, from one account.</div>
+      <div class="ok">After probation it can go <strong>a lot higher:</strong> bonuses, and a higher base depending on how your first 3 months went.</div>
+    </div>
+    <p class="sub">2.5% may not look like a lot. <strong>It has no ceiling.</strong> It comes down to how hungry and disciplined you are. <strong>Don't fumble the opportunity.</strong></p>
+  </section>
+
+  <!-- 15 -->
+  <section class="s">
+    <div class="k">What we expect from you · the rules</div>
+    <h2>Six things. Every day.</h2>
+    <div class="list">
+      <div class="li hot"><b>01</b><span><strong>Ask questions.</strong> Many, many questions.</span></div>
+      <div class="li hot"><b>02</b><span><strong>Always on time.</strong> 4pm–12am, Monday to Saturday.</span></div>
+      <div class="li hot"><b>03</b><span><strong>Always honest.</strong></span></div>
+      <div class="li hot"><b>04</b><span><strong>Push back</strong> when you have an idea. Ideas are valuable here.</span></div>
+      <div class="li hot"><b>05</b><span><strong>Read the SOP first.</strong> Not in there? Tell K and ask him.</span></div>
+      <div class="li hot"><b>06</b><span><strong>Every login goes in the company sheet.</strong></span></div>
+    </div>
+    <p class="sub">"I didn't know" isn't an excuse. <strong>There are three people next to you.</strong> During probation, breaking these can end it <strong>that same day.</strong></p>
+  </section>
+
+  <!-- 16 -->
+  <section class="s">
+    <div class="k">Over to you · Claudya &amp; Leon</div>
+    <h2>Add something.</h2>
+    <div class="people two">
+      <div class="pp"><div class="v">Claudya</div><div class="e">What have I missed?</div></div>
+      <div class="pp"><div class="v">Leon</div><div class="e">What have I missed?</div></div>
+    </div>
+  </section>
+
+  <!-- 17 -->
+  <section class="s">
+    <div class="k">Your questions</div>
+    <h2>Three questions. Ask anything.</h2>
+    <div class="people one">
+      <div class="pp"><div class="v">You</div><div class="qs"><span>1</span><span>2</span><span>3</span></div></div>
+    </div>
+  </section>
+
+  <!-- setup -->
+  <section class="s">
+    <div class="k">Your setup · ready before day one</div>
+    <h2>Your desk. Your tools.</h2>
+    <div class="kit">
+      <span><strong>Desk</strong> · monitor, mouse, keyboard, HDMI, headphones</span>
+      <span><strong>MacBook</strong></span>
+      <span><strong>Samsung</strong> phone</span>
+      <span><strong>2 SIM cards</strong></span>
+      <span><strong>Work email</strong></span>
+    </div>
+    <div class="apps five" style="grid-template-columns:minmax(0,24vw)">
+      <div class="ap now"><div class="ic" style="background:#1a1a1a;border:1px solid #444">H</div><div class="v">Higgsfield</div><div class="when">With K</div></div>
+    </div>
+  </section>
+
+  <!-- 18 -->
+  <section class="s">
+    <div class="k">What happens next · today</div>
+    <h2>Setup. Intro. Pictures. Accounts.</h2>
+    <div class="ladder">
+      <div class="rung done"><div class="v">Setup</div><div class="e">Your laptop and tools, with K.</div></div>
+      <div class="rung done"><div class="v">Intro</div><div class="e">Company rules, our tools, your model, your 30 days. With Leon and K.</div></div>
+      <div class="rung now"><div class="v">Pictures</div><div class="e">30 pictures: 15 guided, 15 solo.</div></div>
+      <div class="rung now"><div class="v">Accounts</div><div class="e">Instagram, Facebook, Threads.</div></div>
+    </div>
+  </section>
+
+  <section class="s finale">
+    <div class="orbs"><i style="left:5%;animation-delay:0.0s;animation-duration:7.0s"></i><i style="left:12%;animation-delay:1.2s;animation-duration:8.0s"></i><i style="left:20%;animation-delay:2.5s;animation-duration:6.5s"></i><i style="left:31%;animation-delay:0.6s;animation-duration:9.0s"></i><i style="left:40%;animation-delay:3.1s;animation-duration:7.5s"></i><i style="left:48%;animation-delay:1.8s;animation-duration:6.0s"></i><i style="left:57%;animation-delay:0.3s;animation-duration:8.5s"></i><i style="left:66%;animation-delay:2.2s;animation-duration:7.0s"></i><i style="left:74%;animation-delay:1.5s;animation-duration:9.5s"></i><i style="left:83%;animation-delay:3.6s;animation-duration:6.8s"></i><i style="left:91%;animation-delay:0.9s;animation-duration:7.8s"></i><i style="left:96%;animation-delay:2.8s;animation-duration:8.2s"></i></div>
+    <span class="shine" style="-webkit-mask-image:url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9Ii0wLjY0IDAgMzEzLjQyIDcyLjUzIj48ZGVmcy8+PHBhdGggZmlsbD0iI0ZGRkZGRiIgZD0iTTQwLjIxLDEwLjM2NiBRMjguNzYzLDcuNTA4IDE3LjcxMSw4LjYwMyBRMTIuNTI3LDkuMTE3IDEwLjA0MSwxMC40OTcgUTguOTMxLDExLjExMyA4Ljk3NSwxMS41MjkgUTkuMDU2LDEyLjE2OCAyMi4xOTcsMTUuMDYxIFEzMS4zNDQsMTcuMDc0IDM1LjA3MywxOC41MTMgUTQzLjMyOCwyMS42OTkgNDMuOTcyLDI3LjUwMyBRNDQuNjU5LDM0LjAyNyAzNy41OTksMzcuNDIzIFEzMy43MjUsMzkuMjg1IDI3LjUwNyw0MCBMOS44MTcsNDAgUTUuNDE5LDM5LjQ1NyAxLjQ2NCwzOC4zMjcgTDMuOTM2LDI5LjY3MyBRMTIuOTI4LDMyLjI0MiAyNS4wMjgsMzEuMjA0IFEzMC43OTIsMzAuNzA5IDMzLjY5OCwyOS4zMTIgUTM0LjY4MiwyOC44MzggMzUuMDE0LDI4LjQzNiBRMzQuNTYxLDI2Ljk5OCAyMC4yNjIsMjMuODUgUTExLjc3NSwyMS45ODIgOC4zODcsMjAuNzE5IFEwLjY5NywxNy44NTQgMC4wMjUsMTIuNDcxIFEtMC42NDIsNi4xMzQgNS42NzIsMi42MjggUTguOTQyLDAuODEzIDE0LjA1OCwwIEwzMy45NywwIFEzOC4xNjEsMC41NzggNDIuMzksMS42MzQgWiIvPjxwYXRoIGZpbGw9IiNGRkZGRkYiIGQ9Ik04OC45MjYsNDAgTDc2LDkuOTAzIEw2My4wNzQsNDAgTDUzLjI3OSw0MCBMNzAuNDU4LDAgTDgxLjU0MiwwIEw5OC43MjEsNDAgWiIvPjxwYXRoIGZpbGw9IiNGRkZGRkYiIGQ9Ik0xNDAuMTU5LDQwIEwxMTcsMTAuODg2IEwxMTcsNDAgTDEwOCw0MCBMMTA4LDAgTDExOS44NDEsMCBMMTQzLDI5LjExNCBMMTQzLDAgTDE1MiwwIEwxNTIsNDAgWiIvPjxwYXRoIGZpbGw9IiNGRkZGRkYiIGQ9Ik0xNjEsMCBMMjAzLDAgTDIwMyw5IEwxNjEsOSBaIi8+PHBhdGggZmlsbD0iI0ZGRkZGRiIgZD0iTTE4Ni41LDQuNSBMMTg2LjUsNDAgTDE3Ny41LDQwIEwxNzcuNSw0LjUgWiIvPjxwYXRoIGZpbGw9IiNGRkZGRkYiIGQ9Ik0yNDYuMzY0LDAgTDI1OCwxMS42MzYgTDI1OCwyOC4zNjQgTDI0Ni4zNjQsNDAgTDIyMy42MzYsNDAgTDIxMiwyOC4zNjQgTDIxMiwxMS42MzYgTDIyMy42MzYsMCBaIE0yMjcuMzY0LDkgTDIyMSwxNS4zNjQgTDIyMSwyNC42MzYgTDIyNy4zNjQsMzEgTDI0Mi42MzYsMzEgTDI0OSwyNC42MzYgTDI0OSwxNS4zNjQgTDI0Mi42MzYsOSBaIi8+PHBhdGggZmlsbD0iI0ZGRkZGRiIgZD0iTTI3Niw0MCBMMjY3LDQwIEwyNjcsMCBMMzAyLjM2NCwwIEwzMTEsOC42MzYgTDMxMSwxNy44NjQgTDMwMi4zNjQsMjYuNSBMMjc2LDI2LjUgWiBNMjc2LDE3LjUgTDI5OC42MzYsMTcuNSBMMzAyLDE0LjEzNiBMMzAyLDEyLjM2NCBMMjk4LjYzNiw5IEwyNzYsOSBaIi8+PHBhdGggZmlsbD0iI0ZGRkZGRiIgZD0iTTI5Mi4yMjcsMTguODYzIEwzMTIuNzczLDQwIEwzMDAuMjIyLDQwIEwyODUuNzczLDI1LjEzNyBaIi8+PHBhdGggZmlsbD0iIzhBOEE4QSIgZD0iTTEyNS4xOTEsNjMuMzMgTDEyOS45Niw2OC42NTUgTDEzNC43MjksNjMuMzMgTDEzNS40MDksNjMuMzMgTDEyOS45Niw2OS40MTMgTDEyNC41MTEsNjMuMzMgWiBNMTIzLjk4LDcyLjUzIEwxMjMuOTgsNjMuMzMgTDEyNC40ODYsNjMuMzMgTDEyNC40ODYsNzIuNTMgWiBNMTM1Ljk0LDcyLjUzIEwxMzUuNDM0LDcyLjUzIEwxMzUuNDM0LDYzLjMzIEwxMzUuOTQsNjMuMzMgWiIvPjxwYXRoIGZpbGw9IiM4QThBOEEiIGQ9Ik0xNDkuNzQsNjMuODM2IEwxNDEuNTA2LDYzLjgzNiBMMTQxLjUwNiw3Mi4wMjQgTDE0OS43NCw3Mi4wMjQgTDE0OS43NCw3Mi41MyBMMTQxLDcyLjUzIEwxNDEsNjMuMzMgTDE0OS43NCw2My4zMyBaIi8+PHBhdGggZmlsbD0iIzhBOEE4QSIgZD0iTTE0MS4yNTMsNjcuNjc3IEwxNDguNTksNjcuNjc3IEwxNDguNTksNjguMTgzIEwxNDEuMjUzLDY4LjE4MyBaIi8+PHBhdGggZmlsbD0iIzhBOEE4QSIgZD0iTTE2Mi43MDIsNjMuMzMgTDE2NC45Miw2NS41NDggTDE2NC45Miw3MC4zMTIgTDE2Mi43MDIsNzIuNTMgTDE1NC44LDcyLjUzIEwxNTQuOCw2My4zMyBaIE0xNTUuMzA2LDYzLjgzNiBMMTU1LjMwNiw3Mi4wMjQgTDE2Mi40OTIsNzIuMDI0IEwxNjQuNDE0LDcwLjEwMiBMMTY0LjQxNCw2NS43NTggTDE2Mi40OTIsNjMuODM2IFoiLz48cGF0aCBmaWxsPSIjOEE4QThBIiBkPSJNMTY5Ljk4LDYzLjMzIEwxNzAuNDg2LDYzLjMzIEwxNzAuNDg2LDcyLjUzIEwxNjkuOTgsNzIuNTMgWiIvPjxwYXRoIGZpbGw9IiM4QThBOEEiIGQ9Ik0xODUuNTUsNzIuNTMgTDE4MC44MzYsNjMuNTMgTDE3Ni4xMjIsNzIuNTMgTDE3NS41NTEsNzIuNTMgTDE4MC4zNyw2My4zMyBMMTgxLjMwMiw2My4zMyBMMTg2LjEyMSw3Mi41MyBaIi8+PC9zdmc+);mask-image:url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9Ii0wLjY0IDAgMzEzLjQyIDcyLjUzIj48ZGVmcy8+PHBhdGggZmlsbD0iI0ZGRkZGRiIgZD0iTTQwLjIxLDEwLjM2NiBRMjguNzYzLDcuNTA4IDE3LjcxMSw4LjYwMyBRMTIuNTI3LDkuMTE3IDEwLjA0MSwxMC40OTcgUTguOTMxLDExLjExMyA4Ljk3NSwxMS41MjkgUTkuMDU2LDEyLjE2OCAyMi4xOTcsMTUuMDYxIFEzMS4zNDQsMTcuMDc0IDM1LjA3MywxOC41MTMgUTQzLjMyOCwyMS42OTkgNDMuOTcyLDI3LjUwMyBRNDQuNjU5LDM0LjAyNyAzNy41OTksMzcuNDIzIFEzMy43MjUsMzkuMjg1IDI3LjUwNyw0MCBMOS44MTcsNDAgUTUuNDE5LDM5LjQ1NyAxLjQ2NCwzOC4zMjcgTDMuOTM2LDI5LjY3MyBRMTIuOTI4LDMyLjI0MiAyNS4wMjgsMzEuMjA0IFEzMC43OTIsMzAuNzA5IDMzLjY5OCwyOS4zMTIgUTM0LjY4MiwyOC44MzggMzUuMDE0LDI4LjQzNiBRMzQuNTYxLDI2Ljk5OCAyMC4yNjIsMjMuODUgUTExLjc3NSwyMS45ODIgOC4zODcsMjAuNzE5IFEwLjY5NywxNy44NTQgMC4wMjUsMTIuNDcxIFEtMC42NDIsNi4xMzQgNS42NzIsMi42MjggUTguOTQyLDAuODEzIDE0LjA1OCwwIEwzMy45NywwIFEzOC4xNjEsMC41NzggNDIuMzksMS42MzQgWiIvPjxwYXRoIGZpbGw9IiNGRkZGRkYiIGQ9Ik04OC45MjYsNDAgTDc2LDkuOTAzIEw2My4wNzQsNDAgTDUzLjI3OSw0MCBMNzAuNDU4LDAgTDgxLjU0MiwwIEw5OC43MjEsNDAgWiIvPjxwYXRoIGZpbGw9IiNGRkZGRkYiIGQ9Ik0xNDAuMTU5LDQwIEwxMTcsMTAuODg2IEwxMTcsNDAgTDEwOCw0MCBMMTA4LDAgTDExOS44NDEsMCBMMTQzLDI5LjExNCBMMTQzLDAgTDE1MiwwIEwxNTIsNDAgWiIvPjxwYXRoIGZpbGw9IiNGRkZGRkYiIGQ9Ik0xNjEsMCBMMjAzLDAgTDIwMyw5IEwxNjEsOSBaIi8+PHBhdGggZmlsbD0iI0ZGRkZGRiIgZD0iTTE4Ni41LDQuNSBMMTg2LjUsNDAgTDE3Ny41LDQwIEwxNzcuNSw0LjUgWiIvPjxwYXRoIGZpbGw9IiNGRkZGRkYiIGQ9Ik0yNDYuMzY0LDAgTDI1OCwxMS42MzYgTDI1OCwyOC4zNjQgTDI0Ni4zNjQsNDAgTDIyMy42MzYsNDAgTDIxMiwyOC4zNjQgTDIxMiwxMS42MzYgTDIyMy42MzYsMCBaIE0yMjcuMzY0LDkgTDIyMSwxNS4zNjQgTDIyMSwyNC42MzYgTDIyNy4zNjQsMzEgTDI0Mi42MzYsMzEgTDI0OSwyNC42MzYgTDI0OSwxNS4zNjQgTDI0Mi42MzYsOSBaIi8+PHBhdGggZmlsbD0iI0ZGRkZGRiIgZD0iTTI3Niw0MCBMMjY3LDQwIEwyNjcsMCBMMzAyLjM2NCwwIEwzMTEsOC42MzYgTDMxMSwxNy44NjQgTDMwMi4zNjQsMjYuNSBMMjc2LDI2LjUgWiBNMjc2LDE3LjUgTDI5OC42MzYsMTcuNSBMMzAyLDE0LjEzNiBMMzAyLDEyLjM2NCBMMjk4LjYzNiw5IEwyNzYsOSBaIi8+PHBhdGggZmlsbD0iI0ZGRkZGRiIgZD0iTTI5Mi4yMjcsMTguODYzIEwzMTIuNzczLDQwIEwzMDAuMjIyLDQwIEwyODUuNzczLDI1LjEzNyBaIi8+PHBhdGggZmlsbD0iIzhBOEE4QSIgZD0iTTEyNS4xOTEsNjMuMzMgTDEyOS45Niw2OC42NTUgTDEzNC43MjksNjMuMzMgTDEzNS40MDksNjMuMzMgTDEyOS45Niw2OS40MTMgTDEyNC41MTEsNjMuMzMgWiBNMTIzLjk4LDcyLjUzIEwxMjMuOTgsNjMuMzMgTDEyNC40ODYsNjMuMzMgTDEyNC40ODYsNzIuNTMgWiBNMTM1Ljk0LDcyLjUzIEwxMzUuNDM0LDcyLjUzIEwxMzUuNDM0LDYzLjMzIEwxMzUuOTQsNjMuMzMgWiIvPjxwYXRoIGZpbGw9IiM4QThBOEEiIGQ9Ik0xNDkuNzQsNjMuODM2IEwxNDEuNTA2LDYzLjgzNiBMMTQxLjUwNiw3Mi4wMjQgTDE0OS43NCw3Mi4wMjQgTDE0OS43NCw3Mi41MyBMMTQxLDcyLjUzIEwxNDEsNjMuMzMgTDE0OS43NCw2My4zMyBaIi8+PHBhdGggZmlsbD0iIzhBOEE4QSIgZD0iTTE0MS4yNTMsNjcuNjc3IEwxNDguNTksNjcuNjc3IEwxNDguNTksNjguMTgzIEwxNDEuMjUzLDY4LjE4MyBaIi8+PHBhdGggZmlsbD0iIzhBOEE4QSIgZD0iTTE2Mi43MDIsNjMuMzMgTDE2NC45Miw2NS41NDggTDE2NC45Miw3MC4zMTIgTDE2Mi43MDIsNzIuNTMgTDE1NC44LDcyLjUzIEwxNTQuOCw2My4zMyBaIE0xNTUuMzA2LDYzLjgzNiBMMTU1LjMwNiw3Mi4wMjQgTDE2Mi40OTIsNzIuMDI0IEwxNjQuNDE0LDcwLjEwMiBMMTY0LjQxNCw2NS43NTggTDE2Mi40OTIsNjMuODM2IFoiLz48cGF0aCBmaWxsPSIjOEE4QThBIiBkPSJNMTY5Ljk4LDYzLjMzIEwxNzAuNDg2LDYzLjMzIEwxNzAuNDg2LDcyLjUzIEwxNjkuOTgsNzIuNTMgWiIvPjxwYXRoIGZpbGw9IiM4QThBOEEiIGQ9Ik0xODUuNTUsNzIuNTMgTDE4MC44MzYsNjMuNTMgTDE3Ni4xMjIsNzIuNTMgTDE3NS41NTEsNzIuNTMgTDE4MC4zNyw2My4zMyBMMTgxLjMwMiw2My4zMyBMMTg2LjEyMSw3Mi41MyBaIi8+PC9zdmc+)"><img class="slogo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9Ii0wLjY0IDAgMzEzLjQyIDcyLjUzIj48ZGVmcy8+PHBhdGggZmlsbD0iI0ZGRkZGRiIgZD0iTTQwLjIxLDEwLjM2NiBRMjguNzYzLDcuNTA4IDE3LjcxMSw4LjYwMyBRMTIuNTI3LDkuMTE3IDEwLjA0MSwxMC40OTcgUTguOTMxLDExLjExMyA4Ljk3NSwxMS41MjkgUTkuMDU2LDEyLjE2OCAyMi4xOTcsMTUuMDYxIFEzMS4zNDQsMTcuMDc0IDM1LjA3MywxOC41MTMgUTQzLjMyOCwyMS42OTkgNDMuOTcyLDI3LjUwMyBRNDQuNjU5LDM0LjAyNyAzNy41OTksMzcuNDIzIFEzMy43MjUsMzkuMjg1IDI3LjUwNyw0MCBMOS44MTcsNDAgUTUuNDE5LDM5LjQ1NyAxLjQ2NCwzOC4zMjcgTDMuOTM2LDI5LjY3MyBRMTIuOTI4LDMyLjI0MiAyNS4wMjgsMzEuMjA0IFEzMC43OTIsMzAuNzA5IDMzLjY5OCwyOS4zMTIgUTM0LjY4MiwyOC44MzggMzUuMDE0LDI4LjQzNiBRMzQuNTYxLDI2Ljk5OCAyMC4yNjIsMjMuODUgUTExLjc3NSwyMS45ODIgOC4zODcsMjAuNzE5IFEwLjY5NywxNy44NTQgMC4wMjUsMTIuNDcxIFEtMC42NDIsNi4xMzQgNS42NzIsMi42MjggUTguOTQyLDAuODEzIDE0LjA1OCwwIEwzMy45NywwIFEzOC4xNjEsMC41NzggNDIuMzksMS42MzQgWiIvPjxwYXRoIGZpbGw9IiNGRkZGRkYiIGQ9Ik04OC45MjYsNDAgTDc2LDkuOTAzIEw2My4wNzQsNDAgTDUzLjI3OSw0MCBMNzAuNDU4LDAgTDgxLjU0MiwwIEw5OC43MjEsNDAgWiIvPjxwYXRoIGZpbGw9IiNGRkZGRkYiIGQ9Ik0xNDAuMTU5LDQwIEwxMTcsMTAuODg2IEwxMTcsNDAgTDEwOCw0MCBMMTA4LDAgTDExOS44NDEsMCBMMTQzLDI5LjExNCBMMTQzLDAgTDE1MiwwIEwxNTIsNDAgWiIvPjxwYXRoIGZpbGw9IiNGRkZGRkYiIGQ9Ik0xNjEsMCBMMjAzLDAgTDIwMyw5IEwxNjEsOSBaIi8+PHBhdGggZmlsbD0iI0ZGRkZGRiIgZD0iTTE4Ni41LDQuNSBMMTg2LjUsNDAgTDE3Ny41LDQwIEwxNzcuNSw0LjUgWiIvPjxwYXRoIGZpbGw9IiNGRkZGRkYiIGQ9Ik0yNDYuMzY0LDAgTDI1OCwxMS42MzYgTDI1OCwyOC4zNjQgTDI0Ni4zNjQsNDAgTDIyMy42MzYsNDAgTDIxMiwyOC4zNjQgTDIxMiwxMS42MzYgTDIyMy42MzYsMCBaIE0yMjcuMzY0LDkgTDIyMSwxNS4zNjQgTDIyMSwyNC42MzYgTDIyNy4zNjQsMzEgTDI0Mi42MzYsMzEgTDI0OSwyNC42MzYgTDI0OSwxNS4zNjQgTDI0Mi42MzYsOSBaIi8+PHBhdGggZmlsbD0iI0ZGRkZGRiIgZD0iTTI3Niw0MCBMMjY3LDQwIEwyNjcsMCBMMzAyLjM2NCwwIEwzMTEsOC42MzYgTDMxMSwxNy44NjQgTDMwMi4zNjQsMjYuNSBMMjc2LDI2LjUgWiBNMjc2LDE3LjUgTDI5OC42MzYsMTcuNSBMMzAyLDE0LjEzNiBMMzAyLDEyLjM2NCBMMjk4LjYzNiw5IEwyNzYsOSBaIi8+PHBhdGggZmlsbD0iI0ZGRkZGRiIgZD0iTTI5Mi4yMjcsMTguODYzIEwzMTIuNzczLDQwIEwzMDAuMjIyLDQwIEwyODUuNzczLDI1LjEzNyBaIi8+PHBhdGggZmlsbD0iIzhBOEE4QSIgZD0iTTEyNS4xOTEsNjMuMzMgTDEyOS45Niw2OC42NTUgTDEzNC43MjksNjMuMzMgTDEzNS40MDksNjMuMzMgTDEyOS45Niw2OS40MTMgTDEyNC41MTEsNjMuMzMgWiBNMTIzLjk4LDcyLjUzIEwxMjMuOTgsNjMuMzMgTDEyNC40ODYsNjMuMzMgTDEyNC40ODYsNzIuNTMgWiBNMTM1Ljk0LDcyLjUzIEwxMzUuNDM0LDcyLjUzIEwxMzUuNDM0LDYzLjMzIEwxMzUuOTQsNjMuMzMgWiIvPjxwYXRoIGZpbGw9IiM4QThBOEEiIGQ9Ik0xNDkuNzQsNjMuODM2IEwxNDEuNTA2LDYzLjgzNiBMMTQxLjUwNiw3Mi4wMjQgTDE0OS43NCw3Mi4wMjQgTDE0OS43NCw3Mi41MyBMMTQxLDcyLjUzIEwxNDEsNjMuMzMgTDE0OS43NCw2My4zMyBaIi8+PHBhdGggZmlsbD0iIzhBOEE4QSIgZD0iTTE0MS4yNTMsNjcuNjc3IEwxNDguNTksNjcuNjc3IEwxNDguNTksNjguMTgzIEwxNDEuMjUzLDY4LjE4MyBaIi8+PHBhdGggZmlsbD0iIzhBOEE4QSIgZD0iTTE2Mi43MDIsNjMuMzMgTDE2NC45Miw2NS41NDggTDE2NC45Miw3MC4zMTIgTDE2Mi43MDIsNzIuNTMgTDE1NC44LDcyLjUzIEwxNTQuOCw2My4zMyBaIE0xNTUuMzA2LDYzLjgzNiBMMTU1LjMwNiw3Mi4wMjQgTDE2Mi40OTIsNzIuMDI0IEwxNjQuNDE0LDcwLjEwMiBMMTY0LjQxNCw2NS43NTggTDE2Mi40OTIsNjMuODM2IFoiLz48cGF0aCBmaWxsPSIjOEE4QThBIiBkPSJNMTY5Ljk4LDYzLjMzIEwxNzAuNDg2LDYzLjMzIEwxNzAuNDg2LDcyLjUzIEwxNjkuOTgsNzIuNTMgWiIvPjxwYXRoIGZpbGw9IiM4QThBOEEiIGQ9Ik0xODUuNTUsNzIuNTMgTDE4MC44MzYsNjMuNTMgTDE3Ni4xMjIsNzIuNTMgTDE3NS41NTEsNzIuNTMgTDE4MC4zNyw2My4zMyBMMTgxLjMwMiw2My4zMyBMMTg2LjEyMSw3Mi41MyBaIi8+PC9zdmc+" alt="Santor Media"></span>
+    <img class="tie" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgNjAiPjxkZWZzLz48cGF0aCBmaWxsPSIjRDcyNjJFIiBkPSJNOSw0IFE1MCwyNCA5MSw0IFExMDAsMCAxMDAsOSBMMTAwLDUxIFExMDAsNjAgOTEsNTYgUTUwLDM2IDksNTYgUTAsNjAgMCw1MSBMMCw5IFEwLDAgOSw0IFoiLz48L3N2Zz4=" alt="">
+
+  </section>
+
+  <div class="bar" id="bar"></div>
+  <div class="nav" id="nav"></div>
+</div>
+
+<script>
+(function(){
+  var slides=[].slice.call(document.querySelectorAll('.s')), i=0, bar=document.getElementById('bar'), nav=document.getElementById('nav');
+  function go(n){ i=Math.max(0,Math.min(slides.length-1,n)); slides.forEach(function(s,j){ s.classList.toggle('on',j===i); }); bar.style.width=((i+1)/slides.length*100)+'%'; nav.textContent=(i+1)+' / '+slides.length+' · → next'; }
+  function editing(t){ return t && t.closest && t.closest('[contenteditable]'); }
+  document.addEventListener('keydown',function(e){ if(editing(e.target)) { if(e.key==='Escape') e.target.blur(); return; } if(e.key==='ArrowRight'||e.key===' '||e.key==='Enter'||e.key==='PageDown') go(i+1); if(e.key==='ArrowLeft'||e.key==='PageUp') go(i-1); });
+  document.getElementById('deck').addEventListener('click',function(e){ if(e.target.closest('.pad')) return; go(e.clientX>window.innerWidth/3?i+1:i-1); });
+  [].forEach.call(document.querySelectorAll('[contenteditable]'),function(el){
+    try { var v=localStorage.getItem('onb-'+el.id); if(v) el.textContent=v; } catch(_){}
+    el.addEventListener('input',function(){ try { localStorage.setItem('onb-'+el.id, el.textContent); } catch(_){} });
+  });
+  function fmt(n,dec,comma){ var t=n.toFixed(dec); if(comma){ var p=t.split('.'); p[0]=p[0].replace(/\B(?=(\d{3})+(?!\d))/g,','); t=p.join('.'); } return t; }
+  function countUp(el){
+    if(el.dataset.done) return; var txt=el.textContent; if(/[\/–×:]/.test(txt)) return;
+    var m=txt.match(/^([^\d]*)([\d,]+(?:\.\d+)?)(.*)$/); if(!m) return;
+    var pre=m[1], num=m[2], post=m[3], comma=num.indexOf(',')>-1, dec=(num.split('.')[1]||'').length, target=parseFloat(num.replace(/,/g,''));
+    if(!(target>0)) return; el.dataset.done='1'; var t0=null, dur=900;
+    if(window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    function step(ts){ if(!t0) t0=ts; var p=Math.min(1,(ts-t0)/dur); p=1-Math.pow(1-p,3); el.textContent=pre+fmt(target*p,dec,comma)+post; if(p<1) requestAnimationFrame(step); }
+    requestAnimationFrame(step);
+  }
+  var _go=go; go=function(n){ _go(n); setTimeout(function(){ slides[i].querySelectorAll('.big,.tile .v').forEach(countUp); },150); };
+  go(0);
+})();
+</script>
+
+<style id="santor">
+  /* Santor: night, white, steel, with light red as the accent (signal red #D7262E softened) */
+  :root { --bg:#0b0b0b; --panel:#141414; --line:#262626; --ink:#ffffff; --ink-2:#c4c4c4; --ink-3:#8a8a8a;
+          --gold:#ffffff; --gold-2:#8a8a8a; --gold-ink:#0b0b0b; --red:#ef5a61; --green:#ffffff; --lred:#ef5a61; }
+  /* moving background glow: steel top left, light red bottom right */
+  .deck { overflow:hidden; }
+  .deck::before { inset:-25% !important; background:radial-gradient(55% 55% at 18% 22%, rgba(138,138,138,.26), transparent 62%),
+      radial-gradient(50% 50% at 84% 82%, rgba(215,38,46,.22), transparent 62%),
+      radial-gradient(35% 35% at 60% 40%, rgba(255,255,255,.05), transparent 70%) !important; animation:drift 22s ease-in-out infinite alternate; }
+  @keyframes drift { 0% { transform:translate(0,0) rotate(0) } 50% { transform:translate(4%,-3%) rotate(6deg) } 100% { transform:translate(-3%,4%) rotate(-4deg) } }
+  .app::before { background:radial-gradient(60% 50% at 0% 0%, rgba(215,38,46,.16), transparent 70%) !important; }
+  .big { text-shadow:0 0 80px rgba(255,255,255,.22); } .big.bad { text-shadow:0 0 60px rgba(215,38,46,.4); }
+  .bar { background:linear-gradient(90deg,#8a8a8a,#ffffff 60%,var(--lred)) !important; box-shadow:0 0 14px rgba(239,90,97,.6) !important; }
+  .stamp, .shout, .cash { background:linear-gradient(135deg,#5c5c5c,#8a8a8a 45%,#d7262e) !important; color:#fff !important; }
+  .shout { box-shadow:0 10px 40px rgba(215,38,46,.35) !important; }
+  .cash { animation:santorpulse 1.6s ease-out infinite !important; }
+  @keyframes santorpulse { 0% { box-shadow:0 0 0 0 rgba(239,90,97,.6); transform:scale(1) } 70% { box-shadow:0 0 0 28px rgba(239,90,97,0); transform:scale(1.03) } 100% { box-shadow:0 0 0 0 rgba(239,90,97,0); transform:scale(1) } }
+  .orbs i { background:#ffffff; box-shadow:0 0 12px rgba(255,255,255,.8); }
+  .orbs i:nth-child(3n) { background:var(--lred); box-shadow:0 0 14px var(--lred); }
+  .orbs i:nth-child(3n+1) { background:#8a8a8a; box-shadow:0 0 12px #8a8a8a; }
+  .side .us, .ap.now { border-color:var(--lred) !important; box-shadow:0 0 30px rgba(215,38,46,.25) !important; }
+  .day .dn b { background:linear-gradient(135deg,#ffffff,#f28a8f) !important; -webkit-background-clip:text !important; background-clip:text !important; color:transparent !important; }
+  .app .face { background:linear-gradient(135deg,#5c5c5c,#d7262e) !important; border-color:#ffffff !important; box-shadow:0 0 0 .5em rgba(239,90,97,.14) !important; }
+  .app .br { background:#262626 !important; } .app .br i { background:linear-gradient(90deg,#8a8a8a,var(--lred)) !important; }
+  .app .bd.done { border-color:#333 !important; }
+  .frame, .crs .ph-pic { background:linear-gradient(160deg,#262626,#0b0b0b 70%) !important; box-shadow:0 30px 90px rgba(215,38,46,.18), 0 0 0 1px rgba(255,255,255,.12) !important; }
+  .rung.now .v, .rung.now .e, .rung.now .e strong { color:#ffffff !important; }
+  .rung.done .v { color:#8a8a8a; }
+  .k { color:#8a8a8a !important; } .k::before { background:var(--lred) !important; }
+  .fix div::before { color:var(--lred); } .fix div.ok::before { color:#ffffff; }
+  .tile.gold { border-top-color:var(--lred); } .tile.gold .v, .tile.green .v { color:#ffffff; }
+  .ladder { align-items:flex-start !important; }  /* titles in one line, whatever the text under them */
+  .people.one { grid-template-columns:minmax(0,1fr); max-width:40vw; }
+  /* the logo gets a light sweep: white, then light red */
+  .shine { position:relative; display:inline-block; -webkit-mask-size:100% 100%; mask-size:100% 100%; }
+  .shine::after { content:""; position:absolute; inset:0; background:linear-gradient(100deg,transparent 30%,rgba(255,255,255,.9) 45%,rgba(239,90,97,.85) 55%,transparent 70%);
+      background-size:250% 100%; animation:shine 3.2s linear infinite; mix-blend-mode:normal; }
+  .finale .tie { width:44px; height:auto; display:block; margin:5vh auto 0; opacity:0; transition:opacity .8s ease 1s; }
+  .finale.on .tie { opacity:1; }
+  @media (prefers-reduced-motion: reduce) { .deck::before, .shine::after, .cash { animation:none !important; } }
+</style>
+</body></html>
