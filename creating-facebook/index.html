@@ -90,6 +90,15 @@
   .step .shot.filled { aspect-ratio:auto; }
   .step .shot.filled img { max-height:620px; width:auto; max-width:100%; }
   .shots { display:flex; gap:12px; flex-wrap:wrap; } .shots .shot { flex:1 1 200px; }
+  .never { margin:18px 0 0; background:#0B0B0B; color:#fff; border-left:6px solid #D7262E; border-radius:10px; padding:18px 22px; }
+  .never b { display:block; color:#ef5a61; font-size:12px; letter-spacing:.18em; text-transform:uppercase; margin-bottom:8px; }
+  .never p { margin:6px 0; font-weight:800; font-size:15px; letter-spacing:.01em; }
+  .never span { display:block; margin-top:8px; color:#c4c4c4; font-size:13px; }
+  .mock { margin-top:12px; } .mock .shot.phone { max-width:300px; aspect-ratio:auto; } .mock .shot.phone img { border:0; max-height:none; }
+  .never p.bright { color:#FF2424; font-size:18px; font-weight:900; }
+  .red { color:#FF1F1F; font-weight:800; }
+  .why { font-size:13px; color:#3A3A3A; margin-top:6px; } .why b { color:#0B0B0B; }
+  .rel { display:grid; gap:8px; } .rel a { display:flex; justify-content:space-between; border:1px solid var(--line); border-radius:10px; padding:12px 16px; color:inherit; text-decoration:none; font-weight:600; cursor:pointer; } .rel a span { color:var(--steel); font-weight:400; font-size:13px; } .rel a:hover { background:var(--wash); } .rel a.soon { color:var(--steel); cursor:default; border-style:dashed; }
   .warn { margin-top:14px; background:#FDECEC; border:2px solid #D7262E; border-radius:10px; padding:16px 20px; color:#5a0d10; font-size:15px; }
   .warn b { display:block; color:#D7262E; font-size:12px; letter-spacing:.18em; text-transform:uppercase; margin-bottom:6px; }
   .warn strong { color:#0B0B0B; }
@@ -114,6 +123,7 @@
       <li><a href="#look">What it should look like</a></li>
       <li><a href="#done">Done means</a></li>
       <li><a href="#mistakes">Common mistakes</a></li>
+      <li><a href="#related">Related SOPs</a></li>
       
       <li><a href="#log">What changed</a></li>
     </ol>
@@ -142,7 +152,11 @@
     <section id="what">
       <h2><span>02</span>What this is</h2>
       <p>Two things: <strong>her profile</strong> (her as a person) and <strong>her page</strong> (the page fans follow). Both need a profile picture and a banner (the cover photo across the top). Made from the phone's Gmail.</p>
-      <div class="rule"><b>Above all</b>The phone <strong>never</strong> joins a Wi-Fi network: not the office, not home, not a café. Not once, not for a second. The only thing it ever connects to is <strong>a phone's hotspot</strong>: your own, or another work phone's.</div>
+      <div class="never"><b>⚠ The rules that get accounts banned</b>
+        <p>NEVER CONNECT THE PHONE TO WI-FI. HOTSPOT ONLY.</p>
+        <p class="bright">NEVER DOWNLOAD A PICTURE FROM GOOGLE DRIVE ONTO THE PHONE. ALWAYS OPEN IT AND TAKE A SCREENSHOT.</p>
+        <span>The apps can see where a picture came from and how the phone connects. Break one of these and the account gets banned.</span>
+      </div>
     </section>
 
     <section id="before">
@@ -160,7 +174,7 @@
       <div class="step"><div class="n">1</div><div><h4>Open Facebook, create new account</h4><p>Open the app. Press <strong>Create new account</strong>.</p><div class="shot" data-slot="fb-1">Screenshot · fb-1 · create new account</div></div></div>
       <div class="step"><div class="n">2</div><div><h4>Name, birthday, gender</h4><p>Her name. Birthday: <span class="todo">which birthday to use</span> Gender: female.</p><div class="shot" data-slot="fb-2">Screenshot · fb-2 · name and birthday</div></div></div>
       <div class="step"><div class="n">3</div><div><h4>Sign up with email</h4><p>Choose <strong>sign up with email</strong>. Type the phone's Gmail. Put in the code Facebook sends.</p><div class="shot" data-slot="fb-3">Screenshot · fb-3 · sign up with email</div></div></div>
-      <div class="step"><div class="n">4</div><div><h4>Make a password</h4><p>Different from the Gmail's and the Instagram's. Into the login sheet now.</p><div class="shot" data-slot="fb-4">Screenshot · fb-4 · password</div></div></div>
+      <div class="step"><div class="n">4</div><div><h4>Make a password</h4><p>The same as her Gmail's. <span class="todo">confirm: same as Gmail on Facebook too?</span></p><div class="shot" data-slot="fb-4">Screenshot · fb-4 · password</div></div></div>
       <div class="step"><div class="n">5</div><div><h4>Skip everything</h4><p>Contacts, friends, notifications: <strong>skip.</strong></p><div class="shot" data-slot="fb-5">Screenshot · fb-5 · screens to skip</div></div></div>
       <div class="step"><div class="n">6</div><div><h4>Profile picture and banner</h4><p>Add her profile picture, then the banner (cover photo).</p><div class="shot" data-slot="fb-6">Screenshot · fb-6 · profile with picture and banner</div></div></div>
     </section>
@@ -195,9 +209,13 @@
       <ul>
         <li><strong>No banner.</strong> An empty cover looks fake.</li>
         <li><strong>A phone number instead of the email.</strong></li>
-        <li><strong>Reusing a password.</strong></li>
       </ul>
       <p><span class="todo">Added after every review with K</span></p>
+    </section>
+
+    <section id="related">
+      <h2><span>09</span>Related SOPs</h2>
+      <div class="rel"><a href="../creating-instagram/">Creating an Instagram<span>before this</span></a><a href="../creating-threads/">Creating a Threads<span>next</span></a><a href="../creating-pictures/">Creating Pictures<span>profile picture and banner</span></a><a class="soon">Warm Up + Posting<span>day 2 onwards · coming soon</span></a><a class="soon">Profiling<span>what her accounts should look like · coming soon</span></a></div>
     </section>
 
 <div class="ask">
@@ -206,7 +224,7 @@
     </div>
 
     <section id="log" class="log">
-      <h2><span>09</span>What changed</h2>
+      <h2><span>10</span>What changed</h2>
       <table>
         <tr><th>Date</th><th>Change</th></tr>
         <tr><td>10 Nov 2026</td><td>v0.1: written from K's accounts board. Screenshots and tutorial links to come.</td></tr>
