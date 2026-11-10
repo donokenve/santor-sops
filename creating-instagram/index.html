@@ -90,7 +90,7 @@
   .step .shot.filled { aspect-ratio:auto; }
   .step .shot.filled img { max-height:620px; width:auto; max-width:100%; }
   .back { display:block; font-size:13px; color:var(--steel); text-decoration:none; margin:-12px 0 22px; cursor:pointer; }
-  .back:hover { color:var(--night); }
+  .back:hover { color:var(--night); } .back::before { content:none !important; display:none !important; }
   .pdf { margin-top:18px; font:600 14px Archivo, system-ui, sans-serif; background:var(--night); color:#fff; border:0; border-radius:8px; padding:11px 18px; cursor:pointer; }
   @media print { .pdf, .back { display:none; } }
 </style>

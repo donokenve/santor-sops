@@ -90,7 +90,7 @@
   .step .shot.filled { aspect-ratio:auto; }
   .step .shot.filled img { max-height:620px; width:auto; max-width:100%; }
   .back { display:block; font-size:13px; color:var(--steel); text-decoration:none; margin:-12px 0 22px; cursor:pointer; }
-  .back:hover { color:var(--night); }
+  .back:hover { color:var(--night); } .back::before { content:none !important; display:none !important; }
   .pdf { margin-top:18px; font:600 14px Archivo, system-ui, sans-serif; background:var(--night); color:#fff; border:0; border-radius:8px; padding:11px 18px; cursor:pointer; }
   @media print { .pdf, .back { display:none; } }
 </style>
@@ -125,8 +125,10 @@
 
     <section id="watch">
       <h2><span>01</span>Watch first</h2>
-      <p><strong>Setting up the Samsung and creating a Gmail on mobile</strong>. Watch all of it before you start. Come back to it any time.</p>
-      <p><span class="todo">tutorial link</span></p>
+      <p><strong>Setting up the Samsung and creating a Gmail on mobile</strong>. Watch it once for the flow.</p>
+      <div class="video"><iframe src="https://www.youtube.com/embed/0bgKh1Z6gc8" allowfullscreen></iframe></div>
+      <p class="vlink">Video not playing? Open it here: <a href="https://www.youtube.com/watch?v=0bgKh1Z6gc8">https://www.youtube.com/watch?v=0bgKh1Z6gc8</a></p>
+      <div class="rule"><b>Read this before you copy the video</b>This video is <strong>not</strong> how we do it. It shows you what the screens look like, nothing more. Where the video and this SOP are different, <strong>this SOP wins.</strong> Follow the steps below, every time.</div>
     </section>
 
     <section id="what">
