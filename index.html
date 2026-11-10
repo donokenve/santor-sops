@@ -41,7 +41,11 @@ var SANTOR = (function () {
       'document.querySelectorAll("[data-pdf]").forEach(function(b){b.addEventListener("click",async function(){var t=b.textContent;b.textContent="Preparing…";' +
       'try{var bytes=await S.open("d/"+b.getAttribute("data-pdf")+".pdf.json");var u=URL.createObjectURL(new Blob([bytes],{type:"application/pdf"}));' +
       'var a=document.createElement("a");a.href=u;a.download=document.title.replace(/[^A-Za-z0-9 ]+/g,"").trim()+".pdf";document.body.appendChild(a);a.click();a.remove();setTimeout(function(){URL.revokeObjectURL(u)},5000);}' +
-      'catch(e){alert("Could not open the PDF.")}b.textContent=t;});});})();<\/script>';
+      'catch(e){alert("Could not open the PDF.")}b.textContent=t;});});' +
+      // a tap on a part of the page (Watch first…) scrolls there and keeps the key in the link; ?s=watch opens on that part
+      'document.addEventListener("click",function(e){var a=e.target.closest&&e.target.closest("a"),h=a&&a.getAttribute("href")||"";if(h.charAt(0)!=="#"||h.indexOf("#k=")===0)return;var t=document.getElementById(h.slice(1));if(t){e.preventDefault();t.scrollIntoView({behavior:"smooth",block:"start"});}});' +
+      'var s=new URLSearchParams(location.search).get("s"),st=s&&document.getElementById(s);if(st)setTimeout(function(){st.scrollIntoView({block:"start"})},60);' +
+      '})();<\/script>';
     html = html.replace('</body>', helper + '</body>');
     document.open(); document.write(html); document.close();
   } catch (e) {
