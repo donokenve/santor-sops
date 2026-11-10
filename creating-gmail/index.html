@@ -86,6 +86,16 @@
   .three div { border:1px solid var(--line); border-radius:10px; padding:14px 16px; } .three b { display:block; font-size:16px; }
   @media (max-width:860px) { .three { grid-template-columns:1fr; } }
   @media print { .video { display:none; } }
+  .plib { margin:26px 0 0; border:1px solid var(--line); border-radius:12px; background:#fff; }
+  .plib summary { list-style:none; cursor:pointer; padding:16px 20px; display:flex; justify-content:space-between; align-items:center; gap:12px; }
+  .plib summary::-webkit-details-marker { display:none; }
+  .plib summary b { font-size:16px; } .plib summary span { font-size:13px; color:var(--steel); }
+  .plib summary::after { content:"+"; font-size:22px; font-weight:400; margin-left:auto; }
+  .plib[open] summary::after { content:"–"; }
+  .plib .pl { padding:0 20px 18px; display:grid; gap:16px; }
+  .plib .pi h4 { margin:0 0 2px; } .plib .pi p { margin:0 0 8px; font-size:14px; color:var(--ink2); }
+  .plib .prompt { white-space:pre-line; }
+  @media print { .plib .pl { display:grid !important; } }
   .step .shot { max-width:300px; aspect-ratio:9/19; }
   .step .shot.filled { aspect-ratio:auto; }
   .step .shot.filled img { max-height:620px; width:auto; max-width:100%; }
@@ -99,6 +109,7 @@
   .red { color:#FF1F1F; font-weight:800; }
   .why { font-size:13px; color:#3A3A3A; margin-top:6px; } .why b { color:#0B0B0B; }
   .rel { display:grid; gap:8px; } .rel a { display:flex; justify-content:space-between; border:1px solid var(--line); border-radius:10px; padding:12px 16px; color:inherit; text-decoration:none; font-weight:600; cursor:pointer; } .rel a span { color:var(--steel); font-weight:400; font-size:13px; } .rel a:hover { background:var(--wash); } .rel a.soon { color:var(--steel); cursor:default; border-style:dashed; }
+  .nextstep { display:grid; gap:4px; background:#0B0B0B; color:#fff; border-radius:12px; padding:18px 22px; text-decoration:none; cursor:pointer; } .nextstep b { font-size:11px; letter-spacing:.18em; text-transform:uppercase; color:#ef5a61; } .nextstep span { font-size:15px; } .nextstep em { font-style:normal; font-weight:800; font-size:18px; } .nextstep.soon { opacity:.75; cursor:default; }
   .warn { margin-top:14px; background:#FDECEC; border:2px solid #D7262E; border-radius:10px; padding:16px 20px; color:#5a0d10; font-size:15px; }
   .warn b { display:block; color:#D7262E; font-size:12px; letter-spacing:.18em; text-transform:uppercase; margin-bottom:6px; }
   .warn strong { color:#0B0B0B; }
@@ -133,7 +144,7 @@
     <h1>Creating a Gmail</h1>
     <p class="lede">How we make the phone's Gmail, in the Gmail app. Every account after it is made from this email. Watch the video first, then follow this step by step, every time.</p>
     <div class="meta">
-      <span>Version <b>v0.1</b></span><span>Updated <b>10 Nov 2026</b></span><span>Owner <b>K</b></span><span>For <b>posters</b></span><span>Tool <b>Gmail app · Samsung</b></span>
+      <span>Version <b>v0.1</b></span><span>Updated <b>10 Nov 2026</b></span><span>Owner <b>K</b></span><span>Tool <b>Gmail app · Samsung</b></span>
     </div>
     <a class="pdf" href="Creating-a-Gmail-SOP-v0.1.pdf" download style="display:inline-block;text-decoration:none">Download PDF</a>
 

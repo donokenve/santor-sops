@@ -86,6 +86,16 @@
   .three div { border:1px solid var(--line); border-radius:10px; padding:14px 16px; } .three b { display:block; font-size:16px; }
   @media (max-width:860px) { .three { grid-template-columns:1fr; } }
   @media print { .video { display:none; } }
+  .plib { margin:26px 0 0; border:1px solid var(--line); border-radius:12px; background:#fff; }
+  .plib summary { list-style:none; cursor:pointer; padding:16px 20px; display:flex; justify-content:space-between; align-items:center; gap:12px; }
+  .plib summary::-webkit-details-marker { display:none; }
+  .plib summary b { font-size:16px; } .plib summary span { font-size:13px; color:var(--steel); }
+  .plib summary::after { content:"+"; font-size:22px; font-weight:400; margin-left:auto; }
+  .plib[open] summary::after { content:"–"; }
+  .plib .pl { padding:0 20px 18px; display:grid; gap:16px; }
+  .plib .pi h4 { margin:0 0 2px; } .plib .pi p { margin:0 0 8px; font-size:14px; color:var(--ink2); }
+  .plib .prompt { white-space:pre-line; }
+  @media print { .plib .pl { display:grid !important; } }
   .back { display:block; font-size:13px; color:var(--steel); text-decoration:none; margin:-12px 0 22px; cursor:pointer; }
   .back:hover { color:var(--night); } .back::before { content:none !important; display:none !important; }
   .pdf { margin-top:18px; font:600 14px Archivo, system-ui, sans-serif; background:var(--night); color:#fff; border:0; border-radius:8px; padding:11px 18px; cursor:pointer; }
@@ -120,7 +130,7 @@
     <h1>Creating Pictures</h1>
     <p class="lede">How we make every picture for an account in the Factory: profile pictures, image posts and link stories. Watch the video first. Then follow this step by step, every time.</p>
     <div class="meta">
-      <span>Version <b>v0.2</b></span><span>Updated <b>10 Nov 2026</b></span><span>Owner <b>K</b></span><span>For <b>posters</b></span><span>Tool <b>Factory · Pictures tab</b></span>
+      <span>Version <b>v0.2</b></span><span>Updated <b>10 Nov 2026</b></span><span>Owner <b>K</b></span><span>Tool <b>Factory · Pictures tab</b></span>
     </div>
     <a class="pdf" href="Creating-Pictures-SOP-v0.2.pdf" download style="display:inline-block;text-decoration:none">Download PDF</a>
 
@@ -130,6 +140,21 @@
       <div class="video"><iframe src="https://www.loom.com/embed/d66e5687f6f84d4fb7913a5e1fd23cc9" allowfullscreen></iframe></div>
       <p class="vlink">Video not playing? Open it here: <a href="https://www.loom.com/share/d66e5687f6f84d4fb7913a5e1fd23cc9">https://www.loom.com/share/d66e5687f6f84d4fb7913a5e1fd23cc9</a></p>
     </section>
+
+    <details class="plib">
+      <summary><b>All picture prompts</b><span>Tap to open · copy the one you need</span></summary>
+      <div class="pl">
+        <div class="pi"><h4>A · Face and outfit</h4><p>Puts your model's face and outfit onto the girl in the original.</p><div class="prompt">Put the subject identity of girl one on the subject identity of person two in this image. Maintain girl one outfit. Maintain photo two quality and setting. Keep it natural.</div></div>
+        <div class="pi"><h4>B · Face only</h4><p>Changes only the face. Keeps the original's outfit, look and shadows.</p><div class="prompt">Put face of girl one onto face of girl two. Maintain photo two quality and outfit. Keep it natural.</div></div>
+        <div class="pi"><h4>C · One girl, exact match</h4><p>Swaps the girl in Image 1 for your model in Image 2: her face, hair, body and outfit, in the original's place, pose and camera.</p><div class="prompt">Replace the subject in Image 1 with the exact woman from Image 2. Keep her identity, facial features, hair color, hairstyle, and body proportions exactly as in Image 2. Use her exact outfit from Image 2.
+
+Keep the background and environment from Image 1. Match the exact same pose, camera angle, framing, and camera quality of Image 1.</div></div>
+        <div class="pi"><h4>D · Two girls (friend posts)</h4><p>Swaps both girls in the original: the right one becomes Image 2, the left one Image 3.</p><div class="prompt">Replace the right subject in Image 1 with the exact woman from Image 2 Replace the left subject in Image 1 with the exact woman from Image 3. Keep her identity, facial features, hair color, hairstyle, and body proportions exactly as in Image 2. Use her exact outfit from Image 2 and 3.
+
+Keep the background and environment from Image 1. Match the exact pose, camera angle, framing, and camera quality of Image 1.</div></div>
+        <p class="note">You can always add details to the end of a prompt: a blue lightsaber, red hair, someone smiling in the back.</p>
+      </div>
+    </details>
 
     <section id="what">
       <h2><span>02</span>What this is</h2>
