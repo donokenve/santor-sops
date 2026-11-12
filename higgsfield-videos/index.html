@@ -96,6 +96,9 @@
   .plib .pi h4 { margin:0 0 2px; } .plib .pi p { margin:0 0 8px; font-size:14px; color:var(--ink2); }
   .plib .prompt { white-space:pre-line; }
   @media print { .plib .pl { display:grid !important; } }
+  .step .shot[data-slot^="fv-"] { max-width:none; aspect-ratio:auto; }
+  .step .shot[data-slot^="fv-"] img { max-height:760px; max-width:100%; width:auto; }
+  .shots .shot[data-slot^="fv-"] { flex:1 1 100%; }
   .step .shot { max-width:300px; aspect-ratio:9/19; }
   .step .shot.filled { aspect-ratio:auto; }
   .step .shot.filled img { max-height:620px; width:auto; max-width:100%; }
